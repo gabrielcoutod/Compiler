@@ -9,7 +9,6 @@ Hash **hash_create_empty_table(){
     return table;
 }
 
-
 int hash_function(char *name){
     unsigned long hash = 5381;
     int c;
@@ -22,10 +21,9 @@ int hash_function(char *name){
 }
 
 void hash_insert(Hash **table, char *name, int type){
-
     Hash *newNode = (Hash *)calloc(1, sizeof(Hash));
     char *newName = (char *)calloc(strlen(name), sizeof(char));
-    strcpy(newNode->name, name);
+    strcpy(newName, name);
 
     newNode->type = type;
     newNode->name = newName;
@@ -65,8 +63,25 @@ void hash_print(Hash **table){
 
             while (list != NULL) {
                 printf("(%s %d)", list->name, list->type);
-                list = list->name;
+                list = list->next;
             }
         }
     }
+}
+
+Hash *hash_find(Hash **table, char *name){
+    int pos = hash_function(name);
+    Hash *list = table[pos];
+
+    printf("\n\nPOS %d\n", pos);
+    printf("%d", list != NULL);
+
+    while (list != NULL) {
+        if (strcmp(list->name, name) == 0){
+            return list;
+        }
+        list = list->next;
+    }
+
+    return NULL;
 }
