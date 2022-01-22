@@ -4,6 +4,7 @@
 
 int running = 0;
 int lineNumber = 1;
+Hash **table;
 
 %}
 
@@ -44,11 +45,10 @@ return    {return KW_RETURN;}
 
  /* Literals */
 [0-9]+  {hash_insert(table, yytext, LIT_INTEGER); return LIT_INTEGER;}
-'(\\.|[^'\n\t])'    {hash_insert(table, yytext, LIT_CHAR); return LIT_CHAR;}
-\"([^"\\\n]|\\.)*\" {hash_insert(table, yytext, LIT_STRING); return LIT_STRING;}
+\'(\\.|[^'\\\n])\'    {hash_insert(table, yytext, LIT_CHAR); return LIT_CHAR;}
+\"(\\.|[^"\\\n])*\" {hash_insert(table, yytext, LIT_STRING); return LIT_STRING;}
 
  /* Comments */
-"//".*\n    {++lineNumber;}
 "//".*
 "/*"    {BEGIN(COMMENT);}
 <COMMENT>"*/"   {BEGIN(INITIAL);}

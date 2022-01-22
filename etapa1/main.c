@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include "lex.yy.h"
 
-int yylex();
-extern char *yytext;
-
 int main(int argc, char** argv){
 
     initMe();
