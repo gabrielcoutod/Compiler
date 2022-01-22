@@ -1,3 +1,7 @@
+
+#ifndef LEX_YY_H
+#define LEX_YY_H
+
 #include "hash.h"
 #include "tokens.h"
 
@@ -13,3 +17,5 @@ int yywrap();
 void initMe(void);
 
 int yylex();
+
+#endif

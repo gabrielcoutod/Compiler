@@ -32,6 +32,7 @@ void hash_free(Hash **table);
 // Prints the table. For debugging purposes.
 void hash_print(Hash **table);
 
+// Finds the entry associated with the given name
 Hash *hash_find(Hash **table, char *name);
 
 #endif

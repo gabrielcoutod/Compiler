@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "lex.yy.h"
 
+// Main baseada na main em http://www.inf.ufrgs.br/~johann/comp/main.c
 int main(int argc, char** argv){
 
     initMe();
