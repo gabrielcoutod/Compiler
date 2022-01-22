@@ -4,6 +4,11 @@
 #ifndef HASH_H
 #define HASH_H
 
+#include <stddef.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 #define HASH_SIZE 1024
 
 typedef struct HashStruct {

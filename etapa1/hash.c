@@ -1,8 +1,4 @@
 #include "hash.h"
-#include <stddef.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 Hash **hash_create_empty_table(){
     Hash **table = (Hash **)calloc(HASH_SIZE, sizeof(Hash *));
@@ -72,9 +68,6 @@ void hash_print(Hash **table){
 Hash *hash_find(Hash **table, char *name){
     int pos = hash_function(name);
     Hash *list = table[pos];
-
-    printf("\n\nPOS %d\n", pos);
-    printf("%d", list != NULL);
 
     while (list != NULL) {
         if (strcmp(list->name, name) == 0){
