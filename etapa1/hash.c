@@ -3,18 +3,18 @@
 Hash **table;
 
 void hashInit(){
-    table = (Hash **)calloc(HASH_SIZE, sizeof(Hash *));
+    table = (Hash **) calloc(HASH_SIZE, sizeof(Hash *));
 }
 
 int hashFunction(char *name){
-    unsigned long hash = 5381;
+    int hash = 1;
     int c;
 
     while (c = *name++){
-        hash = ((hash << 5) + hash) + c;
+        hash = (hash * c) % HASH_SIZE + 1;
     }
     
-    return hash % HASH_SIZE;
+    return hash - 1;
 }
 
 void hashInsert(char *name, int type){
@@ -22,8 +22,8 @@ void hashInsert(char *name, int type){
     if (hashFind(name) != NULL)
         return;
 
-    Hash *newNode = (Hash *)calloc(1, sizeof(Hash));
-    char *newName = (char *)calloc(strlen(name), sizeof(char));
+    Hash *newNode = (Hash *) calloc(1, sizeof(Hash));
+    char *newName = (char *) calloc(strlen(name) + 1, sizeof(char));
     strcpy(newName, name);
 
     int pos = hashFunction(name);
@@ -41,10 +41,9 @@ void hashFree(){
 
     for (i = 0; i < HASH_SIZE; ++i) {
         Hash *list = table[i];
-        Hash *prev;
 
         while (list != NULL) {
-            prev = list;
+            Hash *prev = list;
             list = list->next;
 
             free(prev->name);    

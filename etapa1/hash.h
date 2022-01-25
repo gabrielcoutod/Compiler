@@ -20,7 +20,7 @@ typedef struct HashStruct {
 // Create empty table
 void hashInit();
 
-// Hash Function.
+// Hash Function (same as the one shown in class).
 int hashFunction(char *name);
 
 // Inserts a name with a type in the hash table.
