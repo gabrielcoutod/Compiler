@@ -1,6 +1,8 @@
 
 
 
+ /* Feito por Gabriel Couto Domingues */
+ 
 #ifndef HASH_H
 #define HASH_H
 

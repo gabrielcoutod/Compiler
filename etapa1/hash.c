@@ -1,3 +1,5 @@
+ /* Feito por Gabriel Couto Domingues */
+
 #include "hash.h"
 
 Hash **table;

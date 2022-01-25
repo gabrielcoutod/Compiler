@@ -1,4 +1,6 @@
 
+ /* Feito por Gabriel Couto Domingues */
+
 %{
 #include "hash.h"
 #include "tokens.h"
@@ -57,9 +59,9 @@ return    {return KW_RETURN;}
 \"(\\.|[^"\\\n])*\" {hashInsert(yytext, LIT_STRING); return LIT_STRING;}
 
  /* Comments */
-"//".*
-"/*"    {BEGIN(COMMENT);}
-<COMMENT>"*/"   {BEGIN(INITIAL);}
+"\\\\".*
+"\\*"    {BEGIN(COMMENT);}
+<COMMENT>"*\\"   {BEGIN(INITIAL);}
 <COMMENT>"\n"   {++lineNumber;}
 <COMMENT>.
 
