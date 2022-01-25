@@ -5,7 +5,7 @@
 #include "hash.h"
 #include "tokens.h"
 
-int running = 0;
+int running = 1;
 int lineNumber = 1;
 
 int isRunning(void);

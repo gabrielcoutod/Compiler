@@ -11,7 +11,7 @@ int main(int argc, char** argv){
         if (!isRunning())
             break;
 
-        printf("(%d,%s,%d)\n", getLineNumber(), yytext, token);
+        printf("(line=%d, str=%s, type=%d)\n", getLineNumber(), yytext, token);
     }
 
     hashPrint();

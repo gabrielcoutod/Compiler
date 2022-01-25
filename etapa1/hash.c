@@ -4,7 +4,7 @@
 
 Hash **table;
 
-void hashInit(){
+void hashInit(void){
     table = (Hash **) calloc(HASH_SIZE, sizeof(Hash *));
 }
 
@@ -38,7 +38,7 @@ void hashInsert(char *name, int type){
     table[pos] = newNode;
 }
 
-void hashFree(){
+void hashFree(void){
     int i;
 
     for (i = 0; i < HASH_SIZE; ++i) {
@@ -52,9 +52,12 @@ void hashFree(){
             free(prev);
         }
     }
+
+    free(table);
+    table = NULL;
 }
 
-void hashPrint(){
+void hashPrint(void){
     int i;
     for (i = 0; i < HASH_SIZE; ++i){
         Hash *list = table[i];

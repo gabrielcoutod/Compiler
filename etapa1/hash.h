@@ -2,7 +2,7 @@
 
 
  /* Feito por Gabriel Couto Domingues */
- 
+
 #ifndef HASH_H
 #define HASH_H
 
@@ -19,8 +19,8 @@ typedef struct HashStruct {
     struct HashStruct *next;
 } Hash;
 
-// Create empty table
-void hashInit();
+// Create empty table.
+void hashInit(void);
 
 // Hash Function (same as the one shown in class).
 int hashFunction(char *name);
@@ -29,12 +29,12 @@ int hashFunction(char *name);
 void hashInsert(char *name, int type);
 
 // Frees the hash table.
-void hashFree();
+void hashFree(void);
 
 // Prints the table. For debugging purposes.
-void hashPrint();
+void hashPrint(void);
 
-// Finds the entry associated with the given name
+// Finds the entry associated with the given name.
 Hash *hashFind(char *name);
 
 #endif
