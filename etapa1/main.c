@@ -14,6 +14,8 @@ int main(int argc, char** argv){
         printf("(line=%d, str=%s, type=%d)\n", getLineNumber(), yytext, token);
     }
 
+    printf("\n");
+
     hashPrint();
 
     hashFree();
