@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define HASH_SIZE 1024
+#define HASH_SIZE 997
 
 typedef struct HashStruct {
     int type;
@@ -18,21 +18,21 @@ typedef struct HashStruct {
 } Hash;
 
 // Create empty table
-Hash **hash_create_empty_table();
+void hashInit();
 
-// Hash Function with djb2 algorithm.
-int hash_function(char *name);
+// Hash Function.
+int hashFunction(char *name);
 
 // Inserts a name with a type in the hash table.
-void hash_insert(Hash **table, char *name, int type);
+void hashInsert(char *name, int type);
 
 // Frees the hash table.
-void hash_free(Hash **table);
+void hashFree();
 
 // Prints the table. For debugging purposes.
-void hash_print(Hash **table);
+void hashPrint();
 
 // Finds the entry associated with the given name
-Hash *hash_find(Hash **table, char *name);
+Hash *hashFind(char *name);
 
 #endif

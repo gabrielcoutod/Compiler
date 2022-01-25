@@ -1,10 +1,17 @@
 
 %{
-#include "lex.yy.h"
+#include "hash.h"
+#include "tokens.h"
 
 int running = 0;
 int lineNumber = 1;
-Hash **table;
+
+int isRunning(void);
+
+int getLineNumber(void);
+
+void initMe(void);
+
 
 %}
 
@@ -12,11 +19,6 @@ Hash **table;
 
 %%
 
- /* Tabs and spaces*/
-[ \t]
-
- /* New line */
-"\n" {++lineNumber;}
 
  /* Reserved */
 char  {return KW_CHAR;}
@@ -40,13 +42,19 @@ return    {return KW_RETURN;}
 "=="    {return OPERATOR_EQ;}
 "!="   {return OPERATOR_DIF;}
 
+ /* Tabs and spaces*/
+[ \t]
+
+ /* New line */
+"\n" {++lineNumber;}
+
  /* Identifiers */
-[a-z_-]*    {hash_insert(table, yytext, TK_IDENTIFIER); return TK_IDENTIFIER;}
+[a-z_-]*    {hashInsert(yytext, TK_IDENTIFIER); return TK_IDENTIFIER;}
 
  /* Literals */
-[0-9]+  {hash_insert(table, yytext, LIT_INTEGER); return LIT_INTEGER;}
-\'(\\.|[^'\\\n])\'    {hash_insert(table, yytext, LIT_CHAR); return LIT_CHAR;}
-\"(\\.|[^"\\\n])*\" {hash_insert(table, yytext, LIT_STRING); return LIT_STRING;}
+[0-9]+  {hashInsert(yytext, LIT_INTEGER); return LIT_INTEGER;}
+\'(\\.|[^'\\\n])\'    {hashInsert(yytext, LIT_CHAR); return LIT_CHAR;}
+\"(\\.|[^"\\\n])*\" {hashInsert(yytext, LIT_STRING); return LIT_STRING;}
 
  /* Comments */
 "//".*
@@ -58,6 +66,9 @@ return    {return KW_RETURN;}
  /* Error */
 .   {return TOKEN_ERROR;}
 %%
+
+#include "main.c"
+#include "hash.c"
 
 int isRunning(void) {
     return running;
@@ -73,7 +84,7 @@ int yywrap(){
 }
 
 void initMe(void){
-    table = hash_create_empty_table();
+    hashInit();
     running = 1;
     lineNumber = 1;
 }

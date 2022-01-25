@@ -1,11 +1,12 @@
 #include "hash.h"
 
-Hash **hash_create_empty_table(){
-    Hash **table = (Hash **)calloc(HASH_SIZE, sizeof(Hash *));
-    return table;
+Hash **table;
+
+void hashInit(){
+    table = (Hash **)calloc(HASH_SIZE, sizeof(Hash *));
 }
 
-int hash_function(char *name){
+int hashFunction(char *name){
     unsigned long hash = 5381;
     int c;
 
@@ -16,23 +17,26 @@ int hash_function(char *name){
     return hash % HASH_SIZE;
 }
 
-void hash_insert(Hash **table, char *name, int type){
+void hashInsert(char *name, int type){
+
+    if (hashFind(name) != NULL)
+        return;
+
     Hash *newNode = (Hash *)calloc(1, sizeof(Hash));
     char *newName = (char *)calloc(strlen(name), sizeof(char));
     strcpy(newName, name);
 
-    newNode->type = type;
-    newNode->name = newName;
-    newNode->next = NULL;
-
-    int pos = hash_function(name);
+    int pos = hashFunction(name);
     Hash *list = table[pos];
 
+    newNode->type = type;
+    newNode->name = newName;
     newNode->next = list;
+    
     table[pos] = newNode;
 }
 
-void hash_free(Hash **table){
+void hashFree(){
     int i;
 
     for (i = 0; i < HASH_SIZE; ++i) {
@@ -49,24 +53,25 @@ void hash_free(Hash **table){
     }
 }
 
-void hash_print(Hash **table){
+void hashPrint(){
     int i;
     for (i = 0; i < HASH_SIZE; ++i){
         Hash *list = table[i];
 
         if (list != NULL){
-            printf("%d ", i);
+            printf("Table[%d]: ", i);
 
             while (list != NULL) {
-                printf("(%s %d)", list->name, list->type);
+                printf("(str=%s type=%d) ", list->name, list->type);
                 list = list->next;
             }
+            printf("\n");
         }
     }
 }
 
-Hash *hash_find(Hash **table, char *name){
-    int pos = hash_function(name);
+Hash *hashFind(char *name){
+    int pos = hashFunction(name);
     Hash *list = table[pos];
 
     while (list != NULL) {
