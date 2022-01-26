@@ -1,0 +1,61 @@
+\\ palavras reservadas
+char int float
+if
+then
+    else while
+goto read
+        print           return                  
+printreturn
+\*caracteres especiais*\
+,;:
+(
+)
+[
+]
+{
+}
+    + - *
+    / <
+>
+=
+\* operadores compostos *\
+    <=>=
+==
+!=
+\* identificadores 
+ com testes de erro *\
+ident _ident            -ident id_ent
+id-ent
+    iD-ent
+ideN_t
+    Ident
+idEnt
+
+\\ teste de colisao na tabela hash
+ce                                                       
+dd                      
+
+\\ teste para verificar se insere mais vezes na tabela
+ident   ident ident  ident
+ident
+ident
+
+
+
+
+
+\* literais
+ de inteiros, strings e de chars
+ com testes de erro 
+ *\
+123 456
+123.9
+    'a'
+    'b'
+
+"uma sTring" "string COM escape\n"
+"string com outro escape \""
+" nao eh 
+string"
+
+
