@@ -6,5 +6,7 @@
 
 ./etapa1 < test.txt > out.txt
 diff <(head -n 71 out.txt) gold.txt
+grep str=ident <(tail -n +72 out.txt)
+grep str=dd <(tail -n +72 out.txt)
 tail -n +72 out.txt
 rm out.txt

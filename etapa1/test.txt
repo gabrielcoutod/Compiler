@@ -1,4 +1,4 @@
-\\ palavras reservadas
+\\ Reserved words
 char int float
 if
 then
@@ -6,7 +6,7 @@ then
 goto read
         print           return                  
 printreturn
-\*caracteres especiais*\
+\*Special chars*\
 ,;:
 (
 )
@@ -18,12 +18,12 @@ printreturn
     / <
 >
 =
-\* operadores compostos *\
+\* Operators *\
     <=>=
 ==
 !=
-\* identificadores 
- com testes de erro *\
+\* Identifiers
+ with errors *\
 ident _ident            -ident id_ent
 id-ent
     iD-ent
@@ -31,11 +31,11 @@ ideN_t
     Ident
 idEnt
 
-\\ teste de colisao na tabela hash
+\\ Hash table collision tests
 ce                                                       
 dd                      
 
-\\ teste para verificar se insere mais vezes na tabela
+\\ Hash table test to check if the same word is inserted more than once
 ident   ident ident  ident
 ident
 ident
@@ -44,9 +44,9 @@ ident
 
 
 
-\* literais
- de inteiros, strings e de chars
- com testes de erro 
+\* Literals
+ of integers, strings and chars
+ with errors
  *\
 123 456
 123.9
