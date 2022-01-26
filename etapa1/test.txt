@@ -55,6 +55,7 @@ ident
 
 "uma sTring" "string COM escape\n"
 "string com outro escape \""
+"string com \\"
 " nao eh 
 string"
 

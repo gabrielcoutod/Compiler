@@ -5,8 +5,8 @@
 # and if adding a new node to a position that already has a node works correctly.
 
 ./etapa1 < test.txt > out.txt
-diff <(head -n 71 out.txt) gold.txt
-grep str=ident <(tail -n +72 out.txt)
-grep str=dd <(tail -n +72 out.txt)
-tail -n +72 out.txt
+diff <(head -n 72 out.txt) gold.txt
+grep str=ident <(tail -n +73 out.txt)
+grep str=dd <(tail -n +73 out.txt)
+tail -n +73 out.txt
 rm out.txt
