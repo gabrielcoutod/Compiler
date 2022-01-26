@@ -1,5 +1,5 @@
 
- /* Feito por Gabriel Couto Domingues */
+ /* Made by Gabriel Couto Domingues */
 
 %{
 #include "hash.h"
