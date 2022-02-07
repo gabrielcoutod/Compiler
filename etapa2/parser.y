@@ -48,33 +48,31 @@ decv: var
     | array
     ; 
 
-var: type TK_IDENTIFIER ':' initval
+var: inttype TK_IDENTIFIER ':' lit
+    | KW_FLOAT TK_IDENTIFIER ':' LIT_INTEGER '/' LIT_INTEGER
     ;  
 
-initval: LIT_INTEGER
+lit: LIT_INTEGER
     | LIT_CHAR
-    | LIT_INTEGER '/' LIT_INTEGER
     ;
 
-array: type TK_IDENTIFIER '[' LIT_INTEGER ']' ':' litl
-    | type TK_IDENTIFIER '[' LIT_INTEGER ']'
+array: inttype TK_IDENTIFIER '[' LIT_INTEGER ']' ':' litl
+    | inttype TK_IDENTIFIER '[' LIT_INTEGER ']'
+    | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' ':' litl
+    | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']'
     ;
 
 litl: lit litl
     | lit
     ;
 
-lit: LIT_INTEGER
-    | LIT_CHAR
-    ;
-
-type: KW_INT
+inttype: KW_INT
     | KW_CHAR
-    | KW_FLOAT
     ;
 
 
-decf: type TK_IDENTIFIER '(' parl ')' cmd
+decf: inttype TK_IDENTIFIER '(' parl ')' cmd
+    | KW_FLOAT TK_IDENTIFIER '(' parl ')' cmd
     ;
 
 parl: par restoparl
@@ -85,7 +83,8 @@ restoparl: ',' par restoparl
     |
     ;
 
-par: type TK_IDENTIFIER
+par: inttype TK_IDENTIFIER
+    | KW_FLOAT TK_IDENTIFIER
     ;
 
 body: '{' cmdl '}'
@@ -93,8 +92,8 @@ body: '{' cmdl '}'
 
 cmdl: cmd ';' cmdl
     | rot  ':' cmdl
-    | cmd
-    | rot
+    | cmd ';'
+    | rot ':'
     ;
 
 cmd: attr
