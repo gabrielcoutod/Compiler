@@ -1,8 +1,9 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ Inicializando variavel inteira com fração na linha 6
 
 char c: 'x';
 char d: 100;
-int a: 'A';
+int a: 2/3;
 int i: 1;
 int v[10]: 'a' 0 0 0 0 0 0 0 0 0;
 char x[10]: 'a' 0 0 0 0 0 0 0 0 0;
@@ -27,6 +28,8 @@ int main ()
   print v[5];
   print a;
   i = 2;
+
+  i = vazio();
 
   i = incdois(incn(1, i));
 

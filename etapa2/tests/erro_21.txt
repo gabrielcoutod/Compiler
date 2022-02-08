@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ Identificador fora de uma função na linha 21
 
 char c: 'x';
 char d: 100;
@@ -17,6 +18,7 @@ float f: 2/3;
 This is a comment 
 of multiple lines
 *\
+identificador
 
 int main ()
   {
@@ -27,6 +29,8 @@ int main ()
   print v[5];
   print a;
   i = 2;
+
+  i = vazio();
 
   i = incdois(incn(1, i));
 

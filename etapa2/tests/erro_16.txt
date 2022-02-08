@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ Inicialização de vetor sem valor na linha 16
 
 char c: 'x';
 char d: 100;
@@ -12,6 +13,7 @@ char xx[10];
 float yy[10];
 int matrix[100]; 
 float f: 2/3;
+char vet[20]: ;
 
 \*
 This is a comment 

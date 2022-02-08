@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ ';' faltando na linha 15 (erro só acontece na linha 23 quando le o proximo token que não é comentario)
 
 char c: 'x';
 char d: 100;
@@ -11,12 +12,13 @@ int vv[10];
 char xx[10];
 float yy[10];
 int matrix[100]; 
-float f: 2/3;
+float f: 2/3
 
 \*
 This is a comment 
 of multiple lines
 *\
+
 
 int main ()
   {

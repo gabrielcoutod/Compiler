@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ Erro na linha 79 ao tentar usar um rotulo fora de um bloco (erro só acontece na 81 quando le o proximo token)
 
 char c: 'x';
 char d: 100;
@@ -75,7 +76,7 @@ int vazio()
 
 int printfoo() print 1
 
-int attrvar() a = 5
+int attrvar() roterro
 
 int attrvec() yy[2] = 3
 

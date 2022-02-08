@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ ';' após declaração de função na linha 109
 
 char c: 'x';
 char d: 100;
@@ -101,10 +102,11 @@ int controlgoto(){
 
 int teste[100]; 
 
+
 int incn (int x , int n )
   {
   return x+n;
-  }
+  };
 
 \\ end of file
   

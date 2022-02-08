@@ -1,10 +1,11 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ inicializando vetor inteiro com fração na linha 8
 
 char c: 'x';
 char d: 100;
 int a: 'A';
 int i: 1;
-int v[10]: 'a' 0 0 0 0 0 0 0 0 0;
+int v[10]: 'a' 0 0 0 0 0 0 0 0 2/3;
 char x[10]: 'a' 0 0 0 0 0 0 0 0 0;
 float y[10]: 'a' 0 0 0 0 0 0 0 0 0;
 int vv[10];
@@ -27,6 +28,8 @@ int main ()
   print v[5];
   print a;
   i = 2;
+
+  i = vazio();
 
   i = incdois(incn(1, i));
 

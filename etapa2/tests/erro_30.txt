@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ ';' faltando dentro de um bloco na linha 29 (erro só acontece na 30 quando le o proximo token)
 
 char c: 'x';
 char d: 100;
@@ -25,7 +26,7 @@ int main ()
   a = 5;
   v[a] = 55;
   print v[5];
-  print a;
+  print a
   i = 2;
 
   i = incdois(incn(1, i));

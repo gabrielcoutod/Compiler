@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ bloco vazio na linha 41
 
 char c: 'x';
 char d: 100;
@@ -28,6 +29,8 @@ int main ()
   print a;
   i = 2;
 
+  i = vazio();
+
   i = incdois(incn(1, i));
 
   print "Digite um numero: \n";
@@ -35,7 +38,7 @@ int main ()
 
   a = i + x[(i+5)*4/a-i(i+(i+(i+5)))] + (read * incdois(i));
 
-  {;};
+  {};
 
   ;
 

@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ Tentativa de inicializar parametro na linha 70
 
 char c: 'x';
 char d: 100;
@@ -27,6 +28,8 @@ int main ()
   print v[5];
   print a;
   i = 2;
+
+  i = vazio();
 
   i = incdois(incn(1, i));
 
@@ -64,7 +67,7 @@ int main ()
     goto label-x;
   }
 
-float incdois (int x) 
+float incdois (int x: 5) 
   {
   return x+2;
   }

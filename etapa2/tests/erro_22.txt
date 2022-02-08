@@ -1,4 +1,5 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ comando print fora de uma função na linha 22
 
 char c: 'x';
 char d: 100;
@@ -18,6 +19,8 @@ This is a comment
 of multiple lines
 *\
 
+print
+
 int main ()
   {
   a = 0;
@@ -27,6 +30,8 @@ int main ()
   print v[5];
   print a;
   i = 2;
+
+  i = vazio();
 
   i = incdois(incn(1, i));
 
