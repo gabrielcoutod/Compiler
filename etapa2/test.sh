@@ -1,3 +1,8 @@
+# Made by Gabriel Couto Domingues 
+# File for testing.
+# If the tests pass no output will be shown.
+# If one of the tests fail diff will show the difference betweent the correct result and the program result.
+
 print_result(){
     ./etapa2 $1 > output.txt 2> stderr.txt
     echo "$?: $(<stderr.txt)" >> out_all.txt
