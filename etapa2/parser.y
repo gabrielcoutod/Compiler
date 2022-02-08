@@ -26,6 +26,11 @@
 
 %token TOKEN_ERROR
 
+%left '<' '>' OPERATOR_LE OPERATOR_GE OPERATOR_EQ OPERATOR_DIF
+%left '+' '-'
+%left '*' '/'
+
+
 %{
 int yyerror();
 %}
