@@ -97,8 +97,7 @@ body: '{' cmdl '}'
 
 cmdl: cmd ';' cmdl
     | rot  ':' cmdl
-    | cmd ';'
-    | rot ':'
+    | 
     ;
 
 cmd: attr

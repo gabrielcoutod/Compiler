@@ -23,7 +23,6 @@ print_result tests/erro_106.txt
 print_result tests/erro_23.txt   
 print_result tests/erro_18.txt  
 print_result tests/erro_30.txt
-print_result tests/erro_41.txt  
 print_result tests/erro_6.txt  
 print_result tests/erro_81.txt  
 print_result tests/erro_9.txt
