@@ -1,5 +1,10 @@
  /* Made by Gabriel Couto Domingues */
+#include <stdio.h>
+#include "hash.h"
 
+extern FILE *yyin;
+int yyparse();
+void initMe();
 
 int main(int argc, char** argv){
 

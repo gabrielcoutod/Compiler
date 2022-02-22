@@ -69,9 +69,6 @@ return    {return KW_RETURN;}
 .   {return TOKEN_ERROR;}
 %%
 
-#include "main.c"
-#include "hash.c"
-#include "y.tab.c"
 
 int isRunning(void) {
     return running;

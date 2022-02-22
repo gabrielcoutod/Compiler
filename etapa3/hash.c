@@ -19,10 +19,12 @@ int hashFunction(char *name){
     return hash - 1;
 }
 
-void hashInsert(char *name, int type){
+Hash *hashInsert(char *name, int type){
 
-    if (hashFind(name) != NULL)
-        return;
+    Hash *temp = hashFind(name);
+
+    if (temp != NULL)
+        return temp;
 
     Hash *newNode = (Hash *) calloc(1, sizeof(Hash));
     char *newName = (char *) calloc(strlen(name) + 1, sizeof(char));
@@ -36,6 +38,8 @@ void hashInsert(char *name, int type){
     newNode->next = list;
     
     table[pos] = newNode;
+
+    return newNode;
 }
 
 void hashFree(void){

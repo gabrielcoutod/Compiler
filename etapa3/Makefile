@@ -7,19 +7,31 @@
 # and #include "main.c" in the last part of the scanner.l
 #
 
-etapa2:  y.tab.c lex.yy.c
-	gcc -o etapa2 lex.yy.c
+etapa3: main.o hash.o y.tab.o lex.yy.o
+	gcc main.o lex.yy.o y.tab.o hash.o -o etapa3
 
- y.tab.c: parser.y
+main.o: main.c
+	gcc -c main.c
+
+hash.o: hash.c
+	gcc -c hash.c
+
+y.tab.o: y.tab.c
+	gcc -c y.tab.c
+
+lex.yy.o: lex.yy.c
+	gcc -c lex.yy.c
+
+y.tab.c: parser.y
 	bison -dy parser.y
 
 lex.yy.c: scanner.l
 	flex scanner.l 
 
 tar:
-	tar cvzf etapa2.tgz *
+	tar cvzf etapa3.tgz *
 
 clean:
-	rm lex.yy.c etapa2 y.tab.c y.tab.h etapa2.tgz
+	rm lex.yy.c etapa3 y.tab.c y.tab.h *.o etapa3.tgz
 
 

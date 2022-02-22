@@ -1,5 +1,17 @@
  /* Made by Gabriel Couto Domingues */
 
+ %{
+    #include "hash.h"
+
+    int yyerror();
+    int getLineNumber();
+    int yylex();
+ %}
+
+ %union {
+    Hash *symbol;
+ }
+
 %token KW_CHAR
 %token KW_INT 
 %token KW_FLOAT          

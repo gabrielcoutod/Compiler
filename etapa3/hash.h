@@ -26,7 +26,7 @@ void hashInit(void);
 int hashFunction(char *name);
 
 // Inserts a name with a type in the hash table.
-void hashInsert(char *name, int type);
+Hash *hashInsert(char *name, int type);
 
 // Frees the hash table.
 void hashFree(void);
