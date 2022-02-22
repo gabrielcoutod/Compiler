@@ -1,6 +1,7 @@
  /* Made by Gabriel Couto Domingues */
 
  %{
+    #include "ast.h"
     #include "hash.h"
 
     int yyerror();
@@ -9,7 +10,8 @@
  %}
 
  %union {
-    Hash *symbol;
+    HASH *symbol;
+    AST *ast;
  }
 
 %token KW_CHAR

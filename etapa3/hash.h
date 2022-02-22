@@ -1,6 +1,3 @@
-
-
-
  /* Made by Gabriel Couto Domingues */
 
 #ifndef HASH_H
@@ -17,7 +14,7 @@ typedef struct HashStruct {
     int type;
     char *name;
     struct HashStruct *next;
-} Hash;
+} HASH;
 
 // Create empty table.
 void hashInit(void);
@@ -26,7 +23,7 @@ void hashInit(void);
 int hashFunction(char *name);
 
 // Inserts a name with a type in the hash table.
-Hash *hashInsert(char *name, int type);
+HASH *hashInsert(char *name, int type);
 
 // Frees the hash table.
 void hashFree(void);
@@ -35,6 +32,6 @@ void hashFree(void);
 void hashPrint(void);
 
 // Finds the entry associated with the given name.
-Hash *hashFind(char *name);
+HASH *hashFind(char *name);
 
 #endif
