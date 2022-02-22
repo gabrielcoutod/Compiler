@@ -139,7 +139,7 @@ par: inttype TK_IDENTIFIER {$$ = astCreate(AST_PAR, 0, $1, astSymbol($2), 0, 0);
     | floattype TK_IDENTIFIER {$$ = astCreate(AST_PAR, 0, $1, astSymbol($2), 0, 0);}
     ;
 
-body: '{' cmdl '}' {$$ = $2;}
+body: '{' cmdl '}' {$$ = astCreate(AST_BODY, 0, $2, 0, 0, 0);}
     ;
 
 cmdl: cmd ';' cmdl {$$ = astCreate(AST_CMDL_CMD, 0, $1, $3, 0, 0);}

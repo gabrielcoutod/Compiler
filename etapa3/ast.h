@@ -47,6 +47,7 @@
 #define AST_DECL_VAR_FLOAT 37
 #define AST_DECL 38
 #define AST_SYMBOL 39
+#define AST_BODY 40
 
 typedef struct astnode{
     int type;

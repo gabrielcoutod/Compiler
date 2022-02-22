@@ -1,8 +1,10 @@
  /* Made by Gabriel Couto Domingues */
 #include <stdio.h>
 #include "hash.h"
+#include "decompiler.h"
 
 extern FILE *yyin;
+extern AST *ast;
 int yyparse();
 void initMe();
 
@@ -10,8 +12,8 @@ int main(int argc, char** argv){
 
     initMe();
 
-    if (argc < 2){
-        printf("Missing input file\n");
+    if (argc < 3){
+        printf("Missing args\n");
         exit(1);
     }
 
@@ -21,9 +23,16 @@ int main(int argc, char** argv){
         exit(1);
     }
 
+    FILE *out = fopen(argv[2],"w");
+    if (out == 0) {
+        printf("Cannot open file %s... \n",argv[2]);
+        exit(1);
+    }
+
+
     yyparse();
 
-    hashPrint();
+    decompile(ast, out);
 
     hashFree();
 

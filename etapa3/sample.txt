@@ -6,7 +6,7 @@ int a: 'A';
 int i: 1;
 int v[10]: 'a' 0 0 0 0 0 0 0 0 0;
 char x[10]: 'a' 0 0 0 0 0 0 0 0 0;
-float y[10]: 'a' 0 0 0 0 0 0 0 0 0;
+float y[10]: 'a' 0 0 0 'b';
 int vv[10];
 char xx[10];
 float yy[10];
@@ -88,7 +88,7 @@ int controlif()
     return 0
 
 int controlifelse() 
-  if a >= 2 then 
+  if a > 2 then 
     return 0
   else
     return 1
@@ -103,9 +103,13 @@ int controlgoto(){
     goto rot;
 }
 
+int sorot(){
+  rot:
+}
+
 int teste[100]; 
 
-int incn (int x , int n )
+int incn (int x , char n, float identifier )
   {
   return x+n;
   }
