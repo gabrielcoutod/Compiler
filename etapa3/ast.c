@@ -15,6 +15,10 @@ AST *astCreate(int type, HASH *symbol, AST* s0, AST* s1, AST* s2, AST* s3){
     return newnode;
 }
 
+AST *astSymbol(HASH *symbol){
+    return astCreate(AST_SYMBOL, symbol, 0, 0, 0, 0);
+}
+
 void astPrint(AST *node, int level){
     int i = 0;
 
