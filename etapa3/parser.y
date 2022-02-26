@@ -74,6 +74,8 @@
 %left '+' '-'
 %left '*' '/'
 
+%right IF KW_ELSE
+
 
 %{
 int yyerror();
@@ -200,7 +202,7 @@ restoargl: ',' expr restoargl {$$ = astCreate(AST_ARGL, 0, $2, $3, 0, 0);}
     |   {$$ = 0;}
     ;
 
-control: KW_IF expr KW_THEN cmd {$$ = astCreate(AST_IF, 0, $2, $4, 0, 0);}
+control: KW_IF expr KW_THEN cmd {$$ = astCreate(AST_IF, 0, $2, $4, 0, 0);} %prec IF
     | KW_IF expr KW_THEN cmd KW_ELSE cmd {$$ = astCreate(AST_IF_ELSE, 0, $2, $4, $6, 0);}
     | KW_WHILE expr cmd {$$ = astCreate(AST_WHILE, 0, $2, $3, 0, 0);}
     | KW_GOTO rot {$$ = astCreate(AST_GOTO, 0, $2, 0, 0, 0);}
