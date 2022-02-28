@@ -74,7 +74,7 @@ void astPrint(AST *node, int level){
         case AST_DECL: fprintf(stderr, "AST_DECL"); break;
         case AST_SYMBOL: fprintf(stderr, "AST_SYMBOL"); break;
         case AST_BODY: fprintf(stderr, "AST_BODY"); break;
-        default: fprintf(stderr, "ERROR\n"); break;
+        default: fprintf(stderr, "ERROR\n"); exit(1);
     }
 
     if(node->symbol != 0){

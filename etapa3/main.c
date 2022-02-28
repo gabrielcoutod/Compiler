@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "hash.h"
 #include "decompiler.h"
+#include "ast.h"
 
 extern FILE *yyin;
 extern AST *ast;
@@ -31,6 +32,8 @@ int main(int argc, char** argv){
 
 
     yyparse();
+
+    astPrint(ast, 0);
 
     decompile(ast, out);
 

@@ -48,7 +48,6 @@ void decompile(AST *node, FILE *out){
         case AST_DECL: decompile_AST_DECL(node, out); break;
         case AST_SYMBOL: decompile_AST_SYMBOL(node, out); break;
         case AST_BODY: decompile_AST_BODY(node, out); break;
-
         default: fprintf(stderr, "ERROR\n"); exit(1); break;
     }
 }
