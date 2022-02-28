@@ -1,3 +1,5 @@
+ /* Made by Gabriel Couto Domingues */
+
 #include "decompiler.h"
 
 void decompile(AST *node, FILE *out){

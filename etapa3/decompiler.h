@@ -1,3 +1,5 @@
+ /* Made by Gabriel Couto Domingues */
+
 #ifndef DECOMPILER_H
 #define DECOMPILER_H
 
