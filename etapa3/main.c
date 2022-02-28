@@ -33,7 +33,7 @@ int main(int argc, char** argv){
 
     yyparse();
 
-    astPrint(ast, 0);
+    //astPrint(ast, 0);
 
     decompile(ast, out);
 
