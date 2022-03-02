@@ -112,7 +112,7 @@ array: inttype TK_IDENTIFIER '[' LIT_INTEGER ']' ':' litl {$$ = astCreate(AST_DE
     ;
 
 litl: lit litl {$$ = astCreate(AST_LITL, 0, $1, $2, 0, 0);}
-    | lit   {$$ = $1;}
+    | lit   {$$ = astCreate(AST_LITL, 0, $1, 0, 0, 0);}
     ;
 
 inttype: KW_INT {$$ = astCreate(AST_INT, 0, 0, 0, 0, 0);}
@@ -164,8 +164,8 @@ print: KW_PRINT printl {$$ = astCreate(AST_PRINT, 0, $2, 0, 0, 0);}
 
 printl: expr ',' printl {$$ = astCreate(AST_PRINTL, 0, $1, $3, 0, 0);}
     | LIT_STRING ',' printl {$$ = astCreate(AST_PRINTL, 0, astSymbol($1), $3, 0, 0);}
-    | expr {$$ = $1;}
-    | LIT_STRING {$$ = astSymbol($1);}
+    | expr {$$ = astCreate(AST_PRINTL, 0, $1, 0, 0, 0);}
+    | LIT_STRING {$$ = astCreate(AST_PRINTL, 0, astSymbol($1), 0, 0, 0);}
     ;
 
 return: KW_RETURN expr {$$ = astCreate(AST_RET, 0, $2, 0, 0, 0);}

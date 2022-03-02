@@ -7,7 +7,6 @@
 
 #define MAX_SONS 4
 
-#define AST_UNKNOWN 0
 #define AST_GOTO 1
 #define AST_WHILE 2
 #define AST_IF_ELSE 3
