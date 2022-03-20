@@ -52,12 +52,12 @@ return    {return KW_RETURN;}
 "\n" {++lineNumber;}
 
  /* Identifiers */
-[a-z_-]*    {yylval.symbol = hashInsert(yytext, TK_IDENTIFIER); return TK_IDENTIFIER;}
+[a-z_-]*    {yylval.symbol = hashInsert(yytext, SYMBOL_IDENT); return TK_IDENTIFIER;}
 
  /* Literals */
-[0-9]+  {yylval.symbol = hashInsert(yytext, LIT_INTEGER); return LIT_INTEGER;}
-\'(\\.|[^'\\\n])\'    {yylval.symbol = hashInsert(yytext, LIT_CHAR); return LIT_CHAR;}
-\"(\\.|[^"\\\n])*\" {yylval.symbol = hashInsert(yytext, LIT_STRING); return LIT_STRING;}
+[0-9]+  {yylval.symbol = hashInsert(yytext, SYMBOL_LITINT); return LIT_INTEGER;}
+\'(\\.|[^'\\\n])\'    {yylval.symbol = hashInsert(yytext, SYMBOL_LITCHAR); return LIT_CHAR;}
+\"(\\.|[^"\\\n])*\" {yylval.symbol = hashInsert(yytext, SYMBOL_STRING); return LIT_STRING;}
 
  /* Comments */
 "\\\\".*

@@ -70,7 +70,7 @@ void hashPrint(void){
             printf("Table[%d]: ", i);
 
             while (list != NULL) {
-                printf("(str=%s type=%d) ", list->name, list->type);
+                printf("(str=%s type=%d datatype=%d) ", list->name, list->type, list->datatype);
                 list = list->next;
             }
             printf("\n");

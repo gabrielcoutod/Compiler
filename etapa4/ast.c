@@ -3,6 +3,8 @@
 #include "ast.h"
 
 
+int getLineNumber();
+
 AST *astCreate(int type, HASH *symbol, AST* s0, AST* s1, AST* s2, AST* s3){
     AST *newnode;
     newnode = (AST*) calloc(1, sizeof(AST));
@@ -13,6 +15,8 @@ AST *astCreate(int type, HASH *symbol, AST* s0, AST* s1, AST* s2, AST* s3){
     newnode->son[1] = s1;
     newnode->son[2] = s2;
     newnode->son[3] = s3;
+
+    newnode->line = getLineNumber();
 
     return newnode;
 }

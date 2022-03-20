@@ -51,6 +51,7 @@
 typedef struct astnode{
     int type;
     HASH *symbol;
+    int line;
     struct astnode *son[MAX_SONS];
 } AST;
 

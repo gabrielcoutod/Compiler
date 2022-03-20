@@ -10,10 +10,30 @@
 
 #define HASH_SIZE 997
 
+#define SYMBOL_IDENT 1
+#define SYMBOL_LITINT 2
+#define SYMBOL_LITCHAR 3
+#define SYMBOL_STRING 4
+#define SYMBOL_FUNCTION 5
+#define SYMBOL_VARIABLE 6
+#define SYMBOL_VECTOR 7
+#define SYMBOL_LABEL 8
+
+#define DATATYPE_INT 1
+#define DATATYPE_CHAR 2
+#define DATATYPE_FLOAT 3
+#define DATATYPE_BOOL 4
+
+struct astnode *function;
+
 typedef struct HashStruct {
     int type;
     char *name;
+    int datatype;
+    int datatypeFunction;
     struct HashStruct *next;
+    struct astnode *function;
+    int vecSize;
 } HASH;
 
 // Create empty table.

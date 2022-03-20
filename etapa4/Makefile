@@ -7,14 +7,20 @@
 # and #include "main.c" in the last part of the scanner.l
 #
 
-etapa3: main.o hash.o ast.o y.tab.o lex.yy.o decompiler.o
-	gcc main.o lex.yy.o y.tab.o hash.o ast.o decompiler.o -o etapa3
+etapa4: main.o hash.o ast.o y.tab.o lex.yy.o decompiler.o semantic.o symbols.o
+	gcc main.o lex.yy.o y.tab.o hash.o ast.o decompiler.o semantic.o symbols.o -o etapa4
 
 main.o: main.c
 	gcc -c main.c
 
 decompiler.o: decompiler.c
 	gcc -c decompiler.c
+
+semantic.o: semantic.c
+	gcc -c semantic.c
+
+symbols.o: symbols.c
+	gcc -c symbols.c
 
 hash.o: hash.c
 	gcc -c hash.c
@@ -35,9 +41,9 @@ lex.yy.c: scanner.l
 	flex scanner.l 
 
 tar:
-	tar cvzf etapa3.tgz *
+	tar cvzf etapa4.tgz *
 
 clean:
-	rm lex.yy.c etapa3 y.tab.c y.tab.h *.o etapa3.tgz
+	rm lex.yy.c etapa4 y.tab.c y.tab.h *.o etapa4.tgz
 
 
