@@ -5,6 +5,7 @@ char d: 100;
 int a: 'A';
 int i: 1;
 int v[10]: 'a' 0 0 0 0 0 0 0 0 0;
+int vdafa[0]: 'a' 0 0 0 0 0 0 0 0 0;
 char x[10]: 'a' 0 0 0 0 0 0 0 0 0;
 float y[10]: 'a' 0 0 0 'b';
 float vetorz[10]: 'a';
@@ -24,7 +25,7 @@ int main ()
   a = 0;
   a = a - i;
   a = 5;
-  v[a] = 55;
+  v[a+f] = 55;
   print v[5];
   print a;
   i = 2;
@@ -37,6 +38,8 @@ int main ()
   a = read;
 
   a = i + x[(i+5)*4/a - i(i+(i+(i+5)))] + (read * incdois(i));
+
+  a = (a < 5) < 3;
 
   {;};
 

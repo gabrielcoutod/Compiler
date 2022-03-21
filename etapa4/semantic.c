@@ -39,7 +39,12 @@ void checkAndSetDeclarations(AST *node){
         case AST_DECL_ARR_LIT: 
             setType(node->son[1], SYMBOL_VECTOR, getDataTypeFromType(node->son[0]->type), "vector");
             node->son[1]->symbol->vecSize = atoi(node->son[2]->symbol->name);
-            checkIfLenMatchesSize(node->son[1]->symbol->vecSize, node->son[3], node->son[1]->symbol->name, node->son[1]->line);
+            if(node->son[1]->symbol->vecSize > 0){
+                checkIfLenMatchesSize(node->son[1]->symbol->vecSize, node->son[3], node->son[1]->symbol->name, node->son[1]->line);
+            } else {
+                fprintf(stderr, "Semantic Error: vector %s needs to have positive size at line %d\n", node->son[1]->symbol->name, node->son[1]->line);
+                ++semanticErrors;
+            }
             break;
 
         case AST_DECL_ARR_EMPT: 
@@ -202,8 +207,11 @@ void checkCommand(AST *command){
 
 
 void checkGOTO(AST *command){
-    if(command->son[0]->symbol->type != SYMBOL_LABEL){
+    if(command->son[0]->symbol->type == SYMBOL_IDENT){
         fprintf(stderr, "Semantic Error: label %s not declared at line %d\n", command->son[0]->symbol->name, command->son[0]->line);
+        ++semanticErrors;
+    } else if (command->son[0]->symbol->type != SYMBOL_LABEL){
+        fprintf(stderr, "Semantic Error: %s is not a label at line %d\n", command->son[0]->symbol->name, command->son[0]->line);
         ++semanticErrors;
     }
 } 
@@ -456,17 +464,17 @@ int checkBooleanExpr(AST *expr, char *type){
     int type1 = getDatatypeExpr(expr->son[0]);
     int type2 = getDatatypeExpr(expr->son[1]);
 
-    if(type1 == DATATYPE_BOOL){
-        fprintf(stderr, "SEMANTIC ERROR: invalid left operand for %s at line %d\n", type, expr->line);
+    if(type1 == DATATYPE_BOOL || type1 == 0){
+        fprintf(stderr, "Semantic Error: invalid left operand for %s at line %d\n", type, expr->line);
         ++semanticErrors;
     }
 
-    if(type2 == DATATYPE_BOOL){
-        fprintf(stderr, "SEMANTIC ERROR: invalid right operand for %s at line %d\n", type, expr->line);
+    if(type2 == DATATYPE_BOOL || type2 == 0){
+        fprintf(stderr, "Semantic Error: invalid right operand for %s at line %d\n", type, expr->line);
         ++semanticErrors;
     }
 
-    if(type1 == DATATYPE_BOOL || type2 == DATATYPE_BOOL)
+    if(type1 == DATATYPE_BOOL || type2 == DATATYPE_BOOL || type1 == 0 || type2 == 0)
         return 0;
     else
         return DATATYPE_BOOL;
@@ -476,17 +484,17 @@ int checkArithExpr(AST *expr, char *type){
     int type1 = getDatatypeExpr(expr->son[0]);
     int type2 = getDatatypeExpr(expr->son[1]);
 
-    if(type1 == DATATYPE_BOOL){
-        fprintf(stderr, "SEMANTIC ERROR: invalid left operand for %s at line %d\n", type, expr->line);
+    if(type1 == DATATYPE_BOOL || type1 == 0){
+        fprintf(stderr, "Semantic Error: invalid left operand for %s at line %d\n", type, expr->line);
         ++semanticErrors;
     }
 
-    if(type2 == DATATYPE_BOOL){
-        fprintf(stderr, "SEMANTIC ERROR: invalid right operand for %s at line %d\n", type, expr->line);
+    if(type2 == DATATYPE_BOOL || type2 == 0){
+        fprintf(stderr, "Semantic Error: invalid right operand for %s at line %d\n", type, expr->line);
         ++semanticErrors;
     }
 
-    if(type1 == DATATYPE_BOOL || type2 == DATATYPE_BOOL)
+    if(type1 == DATATYPE_BOOL || type2 == DATATYPE_BOOL || type1 == 0 || type2 == 0)
         return 0;
     else
         return upgradeType(type1, type2);
