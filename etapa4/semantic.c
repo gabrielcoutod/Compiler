@@ -50,6 +50,10 @@ void checkAndSetDeclarations(AST *node){
         case AST_DECL_ARR_EMPT: 
             setType(node->son[1], SYMBOL_VECTOR, getDataTypeFromType(node->son[0]->type), "vector");
             node->son[1]->symbol->vecSize = atoi(node->son[2]->symbol->name);
+            if(node->son[1]->symbol->vecSize <= 0){
+                fprintf(stderr, "Semantic Error: vector %s needs to have positive size at line %d\n", node->son[1]->symbol->name, node->son[1]->line);
+                ++semanticErrors;
+            }
             break;
 
         case AST_DECL_VAR: 
@@ -148,8 +152,8 @@ void checkFunction(AST *node){
             ++semanticErrors;
         } else {
             h->type = SYMBOL_VARIABLE;
-            h->datatype = getDataTypeFromType(par->type);
-            h->datatypeFunction = getDataTypeFromType(par->type);
+            h->datatype = getDataTypeFromType(par->son[0]->type);
+            h->datatypeFunction = getDataTypeFromType(par->son[0]->type);
         }
 
         pars = pars->son[1];

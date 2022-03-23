@@ -114,3 +114,5 @@ Semantic Error: wrong type of expression for attribution of i at line 33
 4: tests/sem_82.txt: Semantic Error: function incdois declared again at line 85
 4: tests/sem_84.txt: Semantic Error: function nopar declared again at line 86
 4: tests/sem_92.txt: Semantic Error: function attrvec declared again at line 94
+4: tests/sem_7.txt: Semantic Error: vector v needs to have positive size at line 7
+4: tests/sem_15_2.txt: Semantic Error: vector matrix needs to have positive size at line 15

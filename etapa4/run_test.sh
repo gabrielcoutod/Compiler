@@ -106,6 +106,8 @@ print_result tests/sem_8.txt
 print_result tests/sem_82.txt
 print_result tests/sem_84.txt
 print_result tests/sem_92.txt
+print_result tests/sem_7.txt
+print_result tests/sem_15_2.txt
 
 diff out_all.txt gold.txt
 rm out_all.txt
