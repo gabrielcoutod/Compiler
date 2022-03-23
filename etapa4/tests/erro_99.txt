@@ -1,14 +1,13 @@
 \\ UFRGS - Compiladores - Marcelo Johann - 2021/2
+\\ Erro na linha 99 ao tentar declarar um rotulo com ';'
 
 char c: 'x';
 char d: 100;
 int a: 'A';
 int i: 1;
 int v[10]: 'a' 0 0 0 0 0 0 0 0 0;
-int vdafa[0]: 'a' 0 0 0 0 0 0 0 0 0;
 char x[10]: 'a' 0 0 0 0 0 0 0 0 0;
-float y[10]: 'a' 0 0 0 'b';
-float vetorz[10]: 'a';
+float y[10]: 'a' 0 0 0 0 0 0 0 0 0;
 int vv[10];
 char xx[10];
 float yy[10];
@@ -25,25 +24,19 @@ int main ()
   a = 0;
   a = a - i;
   a = 5;
-  v[a+f] = 55;
+  v[a] = 55;
   print v[5];
   print a;
   i = 2;
-
-  i = vazio();
 
   i = incdois(incn(1, i));
 
   print "Digite um numero: \n";
   a = read;
 
-  a = i + x[(i+5)*4/a - i(i+(i+(i+5)))] + (read * incdois(i));
-
-  a = (a < 5) < 3;
+  a = i + x[(i+5)*4/a-i(i+(i+(i+5)))] + (read * incdois(i));
 
   {;};
-
-  {};
 
   ;
 
@@ -92,7 +85,7 @@ int controlif()
     return 0
 
 int controlifelse() 
-  if a > 2 then 
+  if a >= 2 then 
     return 0
   else
     return 1
@@ -103,17 +96,13 @@ int controlwhile(){
 }
 
 int controlgoto(){
-  rot:
+  rot;
     goto rot;
-}
-
-int sorot(){
-  rot:
 }
 
 int teste[100]; 
 
-int incn (int x , char n, float identifier )
+int incn (int x , int n )
   {
   return x+n;
   }
