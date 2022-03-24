@@ -215,14 +215,13 @@ void checkCommand(AST *command){
 
 
 void checkGOTO(AST *command){
-    /*
     if(command->son[0]->symbol->type == SYMBOL_IDENT){
         fprintf(stderr, "Semantic Error: label %s not declared at line %d\n", command->son[0]->symbol->name, command->son[0]->line);
         ++semanticErrors;
     } else if (command->son[0]->symbol->type != SYMBOL_LABEL){
         fprintf(stderr, "Semantic Error: %s is not a label at line %d\n", command->son[0]->symbol->name, command->son[0]->line);
         ++semanticErrors;
-    }*/
+    }
 } 
 
 void checkWHILE(AST *command){
@@ -268,7 +267,7 @@ void checkBODY(AST *command){
 
     while(cmdl){
         if(cmdl->type == AST_CMDL_ROT){
-            /*
+
             AST *rot = cmdl->son[0];
             if(rot->symbol->type != SYMBOL_IDENT){
                 fprintf(stderr, "Semantic Error: label %s already declared at line %d\n", rot->symbol->name, rot->line);
@@ -277,7 +276,7 @@ void checkBODY(AST *command){
                 rot->symbol->type = SYMBOL_LABEL;
                 addSymbols(rot->symbol);
             }
-            */
+            
         } else if (cmdl->type == AST_CMDL_CMD){
             checkCommand(cmdl->son[0]);
         }

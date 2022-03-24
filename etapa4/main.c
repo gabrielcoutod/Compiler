@@ -14,7 +14,7 @@ int main(int argc, char** argv){
 
     initMe();
 
-    if (argc < 2){
+    if (argc < 3){
         fprintf(stderr, "Missing file argument.\n");
         exit(1);
     }
@@ -22,6 +22,12 @@ int main(int argc, char** argv){
     yyin = fopen(argv[1],"r");
     if (yyin == 0) {
         fprintf(stderr, "Cannot open file %s.\n",argv[1]);
+        exit(2);
+    }
+
+    FILE *out = fopen(argv[2],"w");
+    if (out == 0) {
+        fprintf(stderr, "Cannot open file %s.\n",argv[2]);
         exit(2);
     }
 
@@ -34,6 +40,8 @@ int main(int argc, char** argv){
     if(getSemanticErrors() > 0){
         exit(4);
     }
+
+    decompile(ast, out);
 
     hashFree();
 

@@ -26,6 +26,7 @@
 2: tests/nao_existe1.txt: Cannot open file tests/nao_existe1.txt.
 2: tests/nao_existe2.txt: Cannot open file tests/nao_existe2.txt.
 1: : Missing file argument.
+1: arquivo.txt: Missing file argument.
 4: tests/sem_10.txt: Semantic Error: vector x declared again at line 10
 4: tests/sem_118_1.txt: Semantic Error: variable f declared again at line 118
 4: tests/sem_118_2.txt: Semantic Error: variable a declared again at line 118
@@ -116,3 +117,6 @@ Semantic Error: wrong type of expression for attribution of i at line 33
 4: tests/sem_92.txt: Semantic Error: function attrvec declared again at line 94
 4: tests/sem_7.txt: Semantic Error: vector v needs to have positive size at line 7
 4: tests/sem_15_2.txt: Semantic Error: vector matrix needs to have positive size at line 15
+4: tests/sem_110.txt: Semantic Error: label rot already declared at line 110
+4: tests/sem_72.txt: Semantic Error: label labelnaodec not declared at line 72
+4: tests/sem_109.txt: Semantic Error: vetorz is not a label at line 109

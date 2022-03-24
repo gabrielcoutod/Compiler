@@ -69,7 +69,7 @@ int main ()
   else
     print "OK!\n";
   if a <= 0 then
-    goto label-x;
+    goto labelnaodec;
 
   return 0;
   }

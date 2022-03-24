@@ -107,6 +107,7 @@ int controlwhile(){
 int controlgoto(){
   rot:
     goto rot;
+  rot:
 }
 
 int sorot(){
