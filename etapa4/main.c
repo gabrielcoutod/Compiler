@@ -25,13 +25,6 @@ int main(int argc, char** argv){
         exit(2);
     }
 
-    FILE *out = fopen(argv[2],"w");
-    if (out == 0) {
-        fprintf(stderr, "Cannot open file %s.\n",argv[2]);
-        exit(2);
-    }
-
-
     yyparse();
 
     //astPrint(ast, 0);
@@ -39,6 +32,12 @@ int main(int argc, char** argv){
     semanticChecks(ast);
     if(getSemanticErrors() > 0){
         exit(4);
+    }
+
+    FILE *out = fopen(argv[2],"w");
+    if (out == 0) {
+        fprintf(stderr, "Cannot open file %s.\n",argv[2]);
+        exit(2);
     }
 
     decompile(ast, out);
