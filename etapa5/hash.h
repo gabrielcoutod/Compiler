@@ -54,4 +54,8 @@ void hashPrint(void);
 // Finds the entry associated with the given name.
 HASH *hashFind(char *name);
 
+HASH *makeTemp(void);
+
+HASH *makeLabel(void);
+
 #endif

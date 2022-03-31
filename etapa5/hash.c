@@ -91,3 +91,19 @@ HASH *hashFind(char *name){
 
     return NULL;
 }
+
+HASH *makeTemp(void){
+    static int serial = 0;
+    char buffer[256] = "";
+
+    sprintf(buffer, "TEMP_%d", serial++);
+    hashInsert(buffer, SYMBOL_VARIABLE);
+}
+
+HASH *makeLabel(void){
+    static int serial = 0;
+    char buffer[256] = "";
+
+    sprintf(buffer, "LABEL_%d", serial++);
+    hashInsert(buffer, SYMBOL_LABEL);
+}

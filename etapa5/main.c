@@ -4,6 +4,7 @@
 #include "decompiler.h"
 #include "ast.h"
 #include "semantic.h"
+#include "tacs.h"
 
 extern FILE *yyin;
 extern AST *ast;
@@ -41,6 +42,8 @@ int main(int argc, char** argv){
     }
 
     decompile(ast, out);
+
+    tacPrintBackwards(generateCode(ast));
 
     hashFree();
 
