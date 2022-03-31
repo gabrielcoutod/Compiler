@@ -1,0 +1,122 @@
+0: tests/sample.txt: Compilation Successful
+3: tests/erro_10.txt: Syntax error at line 10.
+3: tests/erro_108.txt: Syntax error at line 108.
+3: tests/erro_17.txt: Syntax error at line 17.
+3: tests/erro_22.txt: Syntax error at line 22.
+3: tests/erro_34.txt: Syntax error at line 34.
+3: tests/erro_5.txt: Syntax error at line 5.
+3: tests/erro_70.txt: Syntax error at line 70.
+3: tests/erro_83.txt: Syntax error at line 83.
+3: tests/erro_106.txt: Syntax error at line 106.
+3: tests/erro_23.txt: Syntax error at line 23.
+3: tests/erro_18.txt: Syntax error at line 18.
+3: tests/erro_30.txt: Syntax error at line 30.
+3: tests/erro_6.txt: Syntax error at line 6.
+3: tests/erro_81.txt: Syntax error at line 81.
+3: tests/erro_9.txt: Syntax error at line 9.
+3: tests/erro_109.txt: Syntax error at line 109.
+3: tests/erro_16.txt: Syntax error at line 16.
+3: tests/erro_21.txt: Syntax error at line 21.
+3: tests/erro_32.txt: Syntax error at line 32.
+3: tests/erro_49.txt: Syntax error at line 49.
+3: tests/erro_7.txt: Syntax error at line 7.
+3: tests/erro_8.txt: Syntax error at line 8.
+3: tests/erro_99.txt: Syntax error at line 99.
+2: tests/nao_existe.txt: Cannot open file tests/nao_existe.txt.
+2: tests/nao_existe1.txt: Cannot open file tests/nao_existe1.txt.
+2: tests/nao_existe2.txt: Cannot open file tests/nao_existe2.txt.
+1: : Missing file argument.
+1: arquivo.txt: Missing file argument.
+4: tests/sem_10.txt: Semantic Error: vector x declared again at line 10
+4: tests/sem_118_1.txt: Semantic Error: variable f declared again at line 118
+4: tests/sem_118_2.txt: Semantic Error: variable a declared again at line 118
+4: tests/sem_118_3.txt: Semantic Error: variable d declared again at line 118
+4: tests/sem_119_1.txt: Semantic Error: variable identifier declared again at line 119
+4: tests/sem_119_2.txt: Semantic Error: variable n declared again at line 119
+4: tests/sem_119_3.txt: Semantic Error: variable xvar declared again at line 119
+4: tests/sem_12.txt: Semantic Error: vector vetorz declared again at line 12
+4: tests/sem_13.txt: Semantic Error: vector vv declared again at line 13
+4: tests/sem_14.txt: Semantic Error: vector xx declared again at line 14
+4: tests/sem_15.txt: Semantic Error: vector yy declared again at line 15
+4: tests/sem_17.txt: Semantic Error: variable f declared again at line 17
+4: tests/sem_23.txt: Semantic Error: function vv declared again at line 25
+4: tests/sem_25.txt: Semantic Error: wrong type of expression for attribution of a at line 25
+4: tests/sem_26_1.txt: Semantic Error: invalid left operand for - at line 26
+Semantic Error: wrong type of expression for attribution of a at line 26
+4: tests/sem_26_10.txt: Semantic Error: invalid right operand for > at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_11.txt: Semantic Error: invalid right operand for <= at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_12.txt: Semantic Error: invalid right operand for < at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_13.txt: Semantic Error: invalid right operand for == at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_14.txt: Semantic Error: invalid right operand for != at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_15.txt: Semantic Error: invalid left operand for >= at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_16.txt: Semantic Error: invalid left operand for > at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_17.txt: Semantic Error: invalid left operand for <= at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_18.txt: Semantic Error: invalid left operand for < at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_19.txt: Semantic Error: invalid left operand for == at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_2.txt: Semantic Error: invalid left operand for + at line 26
+Semantic Error: wrong type of expression for attribution of a at line 26
+4: tests/sem_26_20.txt: Semantic Error: invalid left operand for != at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_26_3.txt: Semantic Error: invalid left operand for * at line 26
+Semantic Error: wrong type of expression for attribution of a at line 26
+4: tests/sem_26_4.txt: Semantic Error: invalid left operand for / at line 26
+Semantic Error: wrong type of expression for attribution of a at line 26
+4: tests/sem_26_5.txt: Semantic Error: invalid right operand for - at line 26
+Semantic Error: wrong type of expression for attribution of a at line 26
+4: tests/sem_26_6.txt: Semantic Error: invalid right operand for + at line 26
+Semantic Error: wrong type of expression for attribution of a at line 26
+4: tests/sem_26_7.txt: Semantic Error: invalid right operand for * at line 26
+Semantic Error: wrong type of expression for attribution of a at line 26
+4: tests/sem_26_8.txt: Semantic Error: invalid right operand for / at line 26
+Semantic Error: wrong type of expression for attribution of a at line 26
+4: tests/sem_26_9.txt: Semantic Error: invalid right operand for >= at line 26
+Semantic Error: if condition doesn't evaluate to boolean expression at line 26
+4: tests/sem_28_1.txt: Semantic Error: wrong type of expression for index of v at line 28
+4: tests/sem_28_2.txt: Semantic Error: wrong type of expression for attribution of v at line 28
+4: tests/sem_28_3.txt: Semantic Error: wrong type of expression for index of v at line 28
+4: tests/sem_29_1.txt: Semantic Error: wrong type of expression for index of v at line 29
+4: tests/sem_29_2.txt: Semantic Error: wrong type of expression for index of v at line 29
+4: tests/sem_31_1.txt: Semantic Error: vector vetnaodec not declared at line 31
+Semantic Error: wrong type of expression for attribution of i at line 31
+4: tests/sem_31_2.txt: Semantic Error: variable varnaodec not declared at line 31
+Semantic Error: wrong type of expression for attribution of i at line 31
+4: tests/sem_31_3.txt: Semantic Error: main is not a variable at line 31
+Semantic Error: wrong type of expression for attribution of i at line 31
+4: tests/sem_31_4.txt: Semantic Error: f is not a vector at line 31
+Semantic Error: wrong type of expression for attribution of i at line 31
+4: tests/sem_33_1.txt: Semantic Error: function funcaonaodec not declared at line 33
+Semantic Error: wrong type of expression for attribution of i at line 33
+4: tests/sem_33_2.txt: Semantic Error: f is not a function at line 33
+Semantic Error: wrong type of expression for attribution of i at line 33
+4: tests/sem_35.txt: Semantic Error: wrong number of parameters of incn at line 35
+4: tests/sem_4.txt: Semantic Error: variable d declared again at line 5
+4: tests/sem_40_1.txt: Semantic Error: variable varnaodec not declared at line 40
+4: tests/sem_40_2.txt: Semantic Error: vector vecnaodec not declared at line 40
+4: tests/sem_40_3.txt: Semantic Error: a is not a vector at line 40
+4: tests/sem_40_4.txt: Semantic Error: main is not a variable at line 40
+4: tests/sem_50.txt: Semantic Error: while condition doesn't evaluate to boolean expression at line 51
+4: tests/sem_52.txt: Semantic Error: wrong number of parameters of incn at line 52
+4: tests/sem_53.txt: Semantic Error: incompatible type of argument for incn at line 53
+4: tests/sem_58.txt: Semantic Error: if condition doesn't evaluate to boolean expression at line 58
+4: tests/sem_6.txt: Semantic Error: variable a declared again at line 6
+4: tests/sem_65.txt: Semantic Error: if/else condition doesn't evaluate to boolean expression at line 65
+4: tests/sem_74.txt: Semantic Error: return type of expression not compatible at line 74
+4: tests/sem_8.txt: Semantic Error: vector v declared again at line 8
+4: tests/sem_82.txt: Semantic Error: function incdois declared again at line 85
+4: tests/sem_84.txt: Semantic Error: function nopar declared again at line 86
+4: tests/sem_92.txt: Semantic Error: function attrvec declared again at line 94
+4: tests/sem_7.txt: Semantic Error: vector v needs to have positive size at line 7
+4: tests/sem_15_2.txt: Semantic Error: vector matrix needs to have positive size at line 15
+4: tests/sem_110.txt: Semantic Error: label rot already declared at line 110
+4: tests/sem_72.txt: Semantic Error: label labelnaodec not declared at line 72
+4: tests/sem_109.txt: Semantic Error: vetorz is not a label at line 109
