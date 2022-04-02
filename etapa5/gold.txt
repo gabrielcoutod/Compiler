@@ -1,122 +1,169 @@
-0: tests/sample.txt: Compilation Successful
-3: tests/erro_10.txt: Syntax error at line 10.
-3: tests/erro_108.txt: Syntax error at line 108.
-3: tests/erro_17.txt: Syntax error at line 17.
-3: tests/erro_22.txt: Syntax error at line 22.
-3: tests/erro_34.txt: Syntax error at line 34.
-3: tests/erro_5.txt: Syntax error at line 5.
-3: tests/erro_70.txt: Syntax error at line 70.
-3: tests/erro_83.txt: Syntax error at line 83.
-3: tests/erro_106.txt: Syntax error at line 106.
-3: tests/erro_23.txt: Syntax error at line 23.
-3: tests/erro_18.txt: Syntax error at line 18.
-3: tests/erro_30.txt: Syntax error at line 30.
-3: tests/erro_6.txt: Syntax error at line 6.
-3: tests/erro_81.txt: Syntax error at line 81.
-3: tests/erro_9.txt: Syntax error at line 9.
-3: tests/erro_109.txt: Syntax error at line 109.
-3: tests/erro_16.txt: Syntax error at line 16.
-3: tests/erro_21.txt: Syntax error at line 21.
-3: tests/erro_32.txt: Syntax error at line 32.
-3: tests/erro_49.txt: Syntax error at line 49.
-3: tests/erro_7.txt: Syntax error at line 7.
-3: tests/erro_8.txt: Syntax error at line 8.
-3: tests/erro_99.txt: Syntax error at line 99.
-2: tests/nao_existe.txt: Cannot open file tests/nao_existe.txt.
-2: tests/nao_existe1.txt: Cannot open file tests/nao_existe1.txt.
-2: tests/nao_existe2.txt: Cannot open file tests/nao_existe2.txt.
-1: : Missing file argument.
-1: arquivo.txt: Missing file argument.
-4: tests/sem_10.txt: Semantic Error: vector x declared again at line 10
-4: tests/sem_118_1.txt: Semantic Error: variable f declared again at line 118
-4: tests/sem_118_2.txt: Semantic Error: variable a declared again at line 118
-4: tests/sem_118_3.txt: Semantic Error: variable d declared again at line 118
-4: tests/sem_119_1.txt: Semantic Error: variable identifier declared again at line 119
-4: tests/sem_119_2.txt: Semantic Error: variable n declared again at line 119
-4: tests/sem_119_3.txt: Semantic Error: variable xvar declared again at line 119
-4: tests/sem_12.txt: Semantic Error: vector vetorz declared again at line 12
-4: tests/sem_13.txt: Semantic Error: vector vv declared again at line 13
-4: tests/sem_14.txt: Semantic Error: vector xx declared again at line 14
-4: tests/sem_15.txt: Semantic Error: vector yy declared again at line 15
-4: tests/sem_17.txt: Semantic Error: variable f declared again at line 17
-4: tests/sem_23.txt: Semantic Error: function vv declared again at line 25
-4: tests/sem_25.txt: Semantic Error: wrong type of expression for attribution of a at line 25
-4: tests/sem_26_1.txt: Semantic Error: invalid left operand for - at line 26
-Semantic Error: wrong type of expression for attribution of a at line 26
-4: tests/sem_26_10.txt: Semantic Error: invalid right operand for > at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_11.txt: Semantic Error: invalid right operand for <= at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_12.txt: Semantic Error: invalid right operand for < at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_13.txt: Semantic Error: invalid right operand for == at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_14.txt: Semantic Error: invalid right operand for != at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_15.txt: Semantic Error: invalid left operand for >= at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_16.txt: Semantic Error: invalid left operand for > at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_17.txt: Semantic Error: invalid left operand for <= at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_18.txt: Semantic Error: invalid left operand for < at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_19.txt: Semantic Error: invalid left operand for == at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_2.txt: Semantic Error: invalid left operand for + at line 26
-Semantic Error: wrong type of expression for attribution of a at line 26
-4: tests/sem_26_20.txt: Semantic Error: invalid left operand for != at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_26_3.txt: Semantic Error: invalid left operand for * at line 26
-Semantic Error: wrong type of expression for attribution of a at line 26
-4: tests/sem_26_4.txt: Semantic Error: invalid left operand for / at line 26
-Semantic Error: wrong type of expression for attribution of a at line 26
-4: tests/sem_26_5.txt: Semantic Error: invalid right operand for - at line 26
-Semantic Error: wrong type of expression for attribution of a at line 26
-4: tests/sem_26_6.txt: Semantic Error: invalid right operand for + at line 26
-Semantic Error: wrong type of expression for attribution of a at line 26
-4: tests/sem_26_7.txt: Semantic Error: invalid right operand for * at line 26
-Semantic Error: wrong type of expression for attribution of a at line 26
-4: tests/sem_26_8.txt: Semantic Error: invalid right operand for / at line 26
-Semantic Error: wrong type of expression for attribution of a at line 26
-4: tests/sem_26_9.txt: Semantic Error: invalid right operand for >= at line 26
-Semantic Error: if condition doesn't evaluate to boolean expression at line 26
-4: tests/sem_28_1.txt: Semantic Error: wrong type of expression for index of v at line 28
-4: tests/sem_28_2.txt: Semantic Error: wrong type of expression for attribution of v at line 28
-4: tests/sem_28_3.txt: Semantic Error: wrong type of expression for index of v at line 28
-4: tests/sem_29_1.txt: Semantic Error: wrong type of expression for index of v at line 29
-4: tests/sem_29_2.txt: Semantic Error: wrong type of expression for index of v at line 29
-4: tests/sem_31_1.txt: Semantic Error: vector vetnaodec not declared at line 31
-Semantic Error: wrong type of expression for attribution of i at line 31
-4: tests/sem_31_2.txt: Semantic Error: variable varnaodec not declared at line 31
-Semantic Error: wrong type of expression for attribution of i at line 31
-4: tests/sem_31_3.txt: Semantic Error: main is not a variable at line 31
-Semantic Error: wrong type of expression for attribution of i at line 31
-4: tests/sem_31_4.txt: Semantic Error: f is not a vector at line 31
-Semantic Error: wrong type of expression for attribution of i at line 31
-4: tests/sem_33_1.txt: Semantic Error: function funcaonaodec not declared at line 33
-Semantic Error: wrong type of expression for attribution of i at line 33
-4: tests/sem_33_2.txt: Semantic Error: f is not a function at line 33
-Semantic Error: wrong type of expression for attribution of i at line 33
-4: tests/sem_35.txt: Semantic Error: wrong number of parameters of incn at line 35
-4: tests/sem_4.txt: Semantic Error: variable d declared again at line 5
-4: tests/sem_40_1.txt: Semantic Error: variable varnaodec not declared at line 40
-4: tests/sem_40_2.txt: Semantic Error: vector vecnaodec not declared at line 40
-4: tests/sem_40_3.txt: Semantic Error: a is not a vector at line 40
-4: tests/sem_40_4.txt: Semantic Error: main is not a variable at line 40
-4: tests/sem_50.txt: Semantic Error: while condition doesn't evaluate to boolean expression at line 51
-4: tests/sem_52.txt: Semantic Error: wrong number of parameters of incn at line 52
-4: tests/sem_53.txt: Semantic Error: incompatible type of argument for incn at line 53
-4: tests/sem_58.txt: Semantic Error: if condition doesn't evaluate to boolean expression at line 58
-4: tests/sem_6.txt: Semantic Error: variable a declared again at line 6
-4: tests/sem_65.txt: Semantic Error: if/else condition doesn't evaluate to boolean expression at line 65
-4: tests/sem_74.txt: Semantic Error: return type of expression not compatible at line 74
-4: tests/sem_8.txt: Semantic Error: vector v declared again at line 8
-4: tests/sem_82.txt: Semantic Error: function incdois declared again at line 85
-4: tests/sem_84.txt: Semantic Error: function nopar declared again at line 86
-4: tests/sem_92.txt: Semantic Error: function attrvec declared again at line 94
-4: tests/sem_7.txt: Semantic Error: vector v needs to have positive size at line 7
-4: tests/sem_15_2.txt: Semantic Error: vector matrix needs to have positive size at line 15
-4: tests/sem_110.txt: Semantic Error: label rot already declared at line 110
-4: tests/sem_72.txt: Semantic Error: label labelnaodec not declared at line 72
-4: tests/sem_109.txt: Semantic Error: vetorz is not a label at line 109
+TAC(TAC_BEGFUN,main,0,0);
+TAC(TAC_COPY,a,0,0);
+TAC(TAC_SUB,TEMP_0,a,i);
+TAC(TAC_COPY,a,TEMP_0,0);
+TAC(TAC_COPY,a,5,0);
+TAC(TAC_ADD,TEMP_1,a,c);
+TAC(TAC_COPY_VEC,v,TEMP_1,55);
+TAC(TAC_VEC,TEMP_2,v,5);
+TAC(TAC_PRINT,TEMP_2,0,0);
+TAC(TAC_PRINT,a,0,0);
+TAC(TAC_COPY,i,2,0);
+TAC(TAC_LABEL,rot,0,0);
+TAC(TAC_CALL,TEMP_3,vazio,0);
+TAC(TAC_COPY,i,TEMP_3,0);
+TAC(TAC_ARG,1,0,0);
+TAC(TAC_ARG,i,0,0);
+TAC(TAC_ARG,i,0,0);
+TAC(TAC_CALL,TEMP_4,incn,0);
+TAC(TAC_ARG,TEMP_4,0,0);
+TAC(TAC_CALL,TEMP_5,incdois,0);
+TAC(TAC_COPY,i,TEMP_5,0);
+TAC(TAC_PRINT,"Digite um numero: \n",0,0);
+TAC(TAC_READ,TEMP_6,0,0);
+TAC(TAC_COPY,a,TEMP_6,0);
+TAC(TAC_ADD,TEMP_7,i,5);
+TAC(TAC_MUL,TEMP_8,TEMP_7,4);
+TAC(TAC_DIV,TEMP_9,TEMP_8,a);
+TAC(TAC_ADD,TEMP_10,i,5);
+TAC(TAC_ADD,TEMP_11,i,TEMP_10);
+TAC(TAC_ADD,TEMP_12,i,TEMP_11);
+TAC(TAC_MUL,TEMP_13,i,TEMP_12);
+TAC(TAC_SUB,TEMP_14,TEMP_9,TEMP_13);
+TAC(TAC_VEC,TEMP_15,x,TEMP_14);
+TAC(TAC_ADD,TEMP_16,i,TEMP_15);
+TAC(TAC_READ,TEMP_17,0,0);
+TAC(TAC_ARG,i,0,0);
+TAC(TAC_CALL,TEMP_18,incdois,0);
+TAC(TAC_MUL,TEMP_19,TEMP_17,TEMP_18);
+TAC(TAC_ADD,TEMP_20,TEMP_16,TEMP_19);
+TAC(TAC_COPY,a,TEMP_20,0);
+TAC(TAC_SUB,TEMP_21,a,5);
+TAC(TAC_DIV,TEMP_22,TEMP_21,3);
+TAC(TAC_COPY,a,TEMP_22,0);
+TAC(TAC_LABEL,LABEL_0,0,0);
+TAC(TAC_LESS,TEMP_23,i,10);
+TAC(TAC_JFALSE,LABEL_1,TEMP_23,0);
+TAC(TAC_ARG,i,0,0);
+TAC(TAC_ARG,1,0,0);
+TAC(TAC_ARG,3,0,0);
+TAC(TAC_CALL,TEMP_24,incn,0);
+TAC(TAC_COPY,i,TEMP_24,0);
+TAC(TAC_ARG,a,0,0);
+TAC(TAC_ARG,1,0,0);
+TAC(TAC_ARG,4,0,0);
+TAC(TAC_CALL,TEMP_25,incn,0);
+TAC(TAC_COPY,a,TEMP_25,0);
+TAC(TAC_JUMP,LABEL_0,0,0);
+TAC(TAC_LABEL,LABEL_1,0,0);
+TAC(TAC_PRINT,"Incrementado algumas vezes a fica ",0,0);
+TAC(TAC_PRINT,a,0,0);
+TAC(TAC_PRINT,"\n",0,0);
+TAC(TAC_EQ,TEMP_26,a,15);
+TAC(TAC_JFALSE,LABEL_2,TEMP_26,0);
+TAC(TAC_LABEL,label-x,0,0);
+TAC(TAC_SUB,TEMP_27,a,1);
+TAC(TAC_COPY,a,TEMP_27,0);
+TAC(TAC_PRINT,"A era=15\n",0,0);
+TAC(TAC_LABEL,LABEL_2,0,0);
+TAC(TAC_DIF,TEMP_28,i,100);
+TAC(TAC_JFALSE,LABEL_3,TEMP_28,0);
+TAC(TAC_PRINT,"Nao tem como isso...\n",0,0);
+TAC(TAC_JUMP,LABEL_4,0,0);
+TAC(TAC_LABEL,LABEL_3,0,0);
+TAC(TAC_PRINT,"OK!\n",0,0);
+TAC(TAC_LABEL,LABEL_4,0,0);
+TAC(TAC_LE,TEMP_29,a,0);
+TAC(TAC_JFALSE,LABEL_5,TEMP_29,0);
+TAC(TAC_JUMP,label-x,0,0);
+TAC(TAC_LABEL,LABEL_5,0,0);
+TAC(TAC_RET,0,0,0);
+TAC(TAC_ENDFUN,main,0,0);
+TAC(TAC_BEGFUN,incdois,0,0);
+TAC(TAC_ADD,TEMP_30,xvar,2);
+TAC(TAC_RET,TEMP_30,0,0);
+TAC(TAC_ENDFUN,incdois,0,0);
+TAC(TAC_BEGFUN,nopar,0,0);
+TAC(TAC_RET,0,0,0);
+TAC(TAC_ENDFUN,nopar,0,0);
+TAC(TAC_BEGFUN,vazio,0,0);
+TAC(TAC_ENDFUN,vazio,0,0);
+TAC(TAC_BEGFUN,printfoo,0,0);
+TAC(TAC_PRINT,1,0,0);
+TAC(TAC_ENDFUN,printfoo,0,0);
+TAC(TAC_BEGFUN,attrvar,0,0);
+TAC(TAC_COPY,a,5,0);
+TAC(TAC_ENDFUN,attrvar,0,0);
+TAC(TAC_BEGFUN,attrvec,0,0);
+TAC(TAC_COPY_VEC,yy,2,3);
+TAC(TAC_ENDFUN,attrvec,0,0);
+TAC(TAC_BEGFUN,controlif,0,0);
+TAC(TAC_GE,TEMP_31,a,2);
+TAC(TAC_JFALSE,LABEL_6,TEMP_31,0);
+TAC(TAC_RET,0,0,0);
+TAC(TAC_LABEL,LABEL_6,0,0);
+TAC(TAC_ENDFUN,controlif,0,0);
+TAC(TAC_BEGFUN,controlifelse,0,0);
+TAC(TAC_GREAT,TEMP_32,a,2);
+TAC(TAC_JFALSE,LABEL_7,TEMP_32,0);
+TAC(TAC_RET,0,0,0);
+TAC(TAC_JUMP,LABEL_8,0,0);
+TAC(TAC_LABEL,LABEL_7,0,0);
+TAC(TAC_RET,1,0,0);
+TAC(TAC_LABEL,LABEL_8,0,0);
+TAC(TAC_ENDFUN,controlifelse,0,0);
+TAC(TAC_BEGFUN,controlwhile,0,0);
+TAC(TAC_LABEL,LABEL_9,0,0);
+TAC(TAC_LESS,TEMP_33,i,5);
+TAC(TAC_JFALSE,LABEL_10,TEMP_33,0);
+TAC(TAC_PRINT,"teste",0,0);
+TAC(TAC_JUMP,LABEL_9,0,0);
+TAC(TAC_LABEL,LABEL_10,0,0);
+TAC(TAC_ENDFUN,controlwhile,0,0);
+TAC(TAC_BEGFUN,controlgoto,0,0);
+TAC(TAC_LABEL,rot,0,0);
+TAC(TAC_JUMP,rot,0,0);
+TAC(TAC_ENDFUN,controlgoto,0,0);
+TAC(TAC_BEGFUN,sorot,0,0);
+TAC(TAC_LABEL,rot,0,0);
+TAC(TAC_ENDFUN,sorot,0,0);
+TAC(TAC_BEGFUN,incn,0,0);
+TAC(TAC_LABEL,label-x,0,0);
+TAC(TAC_ADD,TEMP_34,n,identifier);
+TAC(TAC_COPY,xvar,TEMP_34,0);
+TAC(TAC_ADD,TEMP_35,n,xvar);
+TAC(TAC_COPY,xvar,TEMP_35,0);
+TAC(TAC_ADD,TEMP_36,xvar,identifier);
+TAC(TAC_COPY,xvar,TEMP_36,0);
+TAC(TAC_COPY,xvar,n,0);
+TAC(TAC_COPY,xvar,xvar,0);
+TAC(TAC_COPY,xvar,identifier,0);
+TAC(TAC_COPY,n,n,0);
+TAC(TAC_COPY,n,xvar,0);
+TAC(TAC_COPY,n,identifier,0);
+TAC(TAC_COPY,identifier,n,0);
+TAC(TAC_COPY,identifier,xvar,0);
+TAC(TAC_COPY,identifier,identifier,0);
+TAC(TAC_ADD,TEMP_37,xvar,identifier);
+TAC(TAC_RET,TEMP_37,0,0);
+TAC(TAC_ENDFUN,incn,0,0);
+TAC(TAC_BEGFUN,incnd,0,0);
+TAC(TAC_ADD,TEMP_38,n,identifier);
+TAC(TAC_COPY,xvar,TEMP_38,0);
+TAC(TAC_ADD,TEMP_39,n,xvar);
+TAC(TAC_COPY,xvar,TEMP_39,0);
+TAC(TAC_ADD,TEMP_40,xvar,identifier);
+TAC(TAC_COPY,xvar,TEMP_40,0);
+TAC(TAC_COPY,xvar,n,0);
+TAC(TAC_COPY,xvar,xvar,0);
+TAC(TAC_COPY,xvar,identifier,0);
+TAC(TAC_COPY,n,n,0);
+TAC(TAC_COPY,n,xvar,0);
+TAC(TAC_COPY,n,identifier,0);
+TAC(TAC_COPY,identifier,n,0);
+TAC(TAC_COPY,identifier,xvar,0);
+TAC(TAC_COPY,identifier,identifier,0);
+TAC(TAC_ADD,TEMP_41,xvar,identifier);
+TAC(TAC_RET,TEMP_41,0,0);
+TAC(TAC_ENDFUN,incnd,0,0);
+Compilation Successful
