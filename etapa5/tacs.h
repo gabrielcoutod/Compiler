@@ -23,7 +23,7 @@
 #define TAC_JUMP 15
 #define TAC_READ 16
 #define TAC_COPY_VEC 17
-#define TAC_VEC 18
+#define TAC_ACC_VEC 18
 #define TAC_RET 19
 #define TAC_PRINT 20
 #define TAC_ARG 21

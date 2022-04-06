@@ -26,6 +26,7 @@ int main ()
   a = a - i;
   a = 5;
   v[a+c] = 55;
+  v[a+c] = a + 1;
   print v[5];
   print a;
   i = 2;

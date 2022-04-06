@@ -4,14 +4,9 @@ TAC *makeDECL_FUNC(TAC *code0, TAC *code1, TAC *code2, TAC *code3);
 TAC *makeARGL(TAC *code0, TAC *code1);
 TAC *makeFCALL(TAC *code0, TAC *code1);
 TAC *makePRINTL(TAC *code0, TAC *code1);
-TAC *makePRINT(TAC *code0);
 TAC *makeCMDL_ROT(TAC *code0, TAC *code1);
-TAC *makeCMDL_CMD(TAC *code0, TAC *code1);
 TAC *makeRET(TAC *code0);
-TAC *makeDECL(TAC *code0, TAC *code1);
-TAC *makeEXPR_PAR(TAC *code0);
 TAC *makeEXPR_VEC(TAC *code0, TAC *code1);
-TAC *makeBODY(TAC *code0);
 TAC *makeATTR(TAC *code0, TAC *code1);
 TAC *makeATTR_VEC(TAC *code0, TAC *code1, TAC *code2);
 TAC *makeSYMBOL(AST *node);
@@ -42,7 +37,7 @@ void tacPrint(TAC *tac){
     
     fprintf(stdout, "TAC(");
     switch(tac->type){
-        case TAC_SYMBOL: fprintf(stdout, "TAC_SYMBOL"); break;
+        case TAC_SYMBOL: break;
         case TAC_ADD: fprintf(stdout, "TAC_ADD"); break;
         case TAC_SUB: fprintf(stdout, "TAC_SUB"); break;
         case TAC_COPY: fprintf(stdout, "TAC_COPY"); break;
@@ -59,7 +54,7 @@ void tacPrint(TAC *tac){
         case TAC_JUMP: fprintf(stdout, "TAC_JUMP"); break;
         case TAC_READ: fprintf(stdout, "TAC_READ"); break;
         case TAC_COPY_VEC: fprintf(stdout, "TAC_COPY_VEC"); break;
-        case TAC_VEC: fprintf(stdout, "TAC_VEC"); break;
+        case TAC_ACC_VEC: fprintf(stdout, "TAC_ACC_VEC"); break;
         case TAC_RET: fprintf(stdout, "TAC_RET"); break;
         case TAC_PRINT: fprintf(stdout, "TAC_PRINT"); break;
         case TAC_ARG: fprintf(stdout, "TAC_ARG"); break;
@@ -116,6 +111,9 @@ TAC *generateCode(AST *node){
         case AST_IF_ELSE: result = makeIFELSE(code[0], code[1], code[2]); break;
         case AST_IF: result =  makeIF(code[0], code[1]); break;
 
+        case AST_ARGL: result = makeARGL(code[0], code[1]); break;
+        case AST_FCALL: result = makeFCALL(code[0], code[1]); break;
+
         case AST_READ: result = makeREAD(); break;
 
         case AST_DIF: result = makeOP(TAC_DIF, code[0], code[1]); break;
@@ -129,50 +127,22 @@ TAC *generateCode(AST *node){
         case AST_SUB: result = makeOP(TAC_SUB, code[0], code[1]); break;
         case AST_ADD: result = makeOP(TAC_ADD, code[0], code[1]); break;
 
-        case AST_SYMBOL: result = makeSYMBOL(node); break;
-
-        case AST_BODY: result = makeBODY(code[0]); break;
-
-        case AST_ATTR_VEC: result = makeATTR_VEC(code[0], code[1], code[2]) ;break;
-        case AST_ATTR:  result = makeATTR(code[0], code[1]); break;
-
-        case AST_EXPR_PAR: result = makeEXPR_PAR(code[0]); break;
         case AST_EXPR_VEC: result = makeEXPR_VEC(code[0], code[1]); break;
 
         case AST_RET: result = makeRET(code[0]); break;
 
-        case AST_CMDL_ROT: result = makeCMDL_ROT(code[0], code[1]); break;
-        case AST_CMDL_CMD: result = makeCMDL_CMD(code[0], code[1]); break;
-
         case AST_PRINTL: result = makePRINTL(code[0], code[1]); break;
-        case AST_PRINT: result = makePRINT(code[0]); break;
 
-        case AST_ARGL: result = makeARGL(code[0], code[1]); break;
-        case AST_FCALL: result = makeFCALL(code[0], code[1]); break;
+        case AST_ATTR_VEC: result = makeATTR_VEC(code[0], code[1], code[2]) ;break;
+        case AST_ATTR:  result = makeATTR(code[0], code[1]); break;
 
-
-        case AST_DECL: result = makeDECL(code[0], code[1]); break;
+        case AST_CMDL_ROT: result = makeCMDL_ROT(code[0], code[1]); break;
 
         case AST_DECL_FUNC: result = makeDECL_FUNC(code[0], code[1], code[2], code[3]); break;
 
+        case AST_SYMBOL: result = makeSYMBOL(node); break;
 
-        case AST_PAR: break;
-        case AST_PARL: break;
-
-        case AST_FLOAT: break;
-        case AST_CHAR: break;
-        case AST_INT: break;
-
-        case AST_LITL: break;
-        case AST_DECL_ARR_EMPT: break;
-        case AST_DECL_ARR_LIT: break;
-        case AST_DECL_VAR: break;
-        case AST_DECL_VAR_FLOAT: break;
-
-        default: 
-            //result = tacJoin(code[0], tacJoin(code[1], tacJoin(code[2], code[3])));
-            fprintf(stderr, "\n\nERROR\n\n");
-            break;
+        default: result = tacJoin(code[0], tacJoin(code[1], tacJoin(code[2], code[3]))); break;
     }
 
     return result;
@@ -192,29 +162,21 @@ TAC *makeARGL(TAC *code0, TAC *code1){
 }
 
 TAC *makeFCALL(TAC *code0, TAC *code1){
-    TAC *ftac = tacCreate(TAC_CALL, makeTemp(), code0? code0->res:0, 0);
+    TAC *ftac = tacCreate(TAC_CALL, makeTemp(), code0? code0->res: 0, 0);
 
     return tacJoin(code0, tacJoin(code1, ftac));
 }
 
 TAC *makePRINTL(TAC *code0, TAC *code1){
-    TAC *printtac = tacCreate(TAC_PRINT, code0? code0->res:0, 0, 0);
+    TAC *printtac = tacCreate(TAC_PRINT, code0? code0->res: 0, 0, 0);
 
     return tacJoin(code0, tacJoin(printtac, code1));
 }
 
-TAC *makePRINT(TAC *code0){
-    return code0;
-}
-
 TAC *makeCMDL_ROT(TAC *code0, TAC *code1){
-    TAC *labeltac = tacCreate(TAC_LABEL, code0? code0->res:0, 0, 0);
+    TAC *labeltac = tacCreate(TAC_LABEL, code0? code0->res: 0, 0, 0);
     
     return tacJoin(code0, tacJoin(labeltac, code1));
-}
-
-TAC *makeCMDL_CMD(TAC *code0, TAC *code1){
-    return tacJoin(code0, code1);
 }
 
 TAC *makeRET(TAC *code0){
@@ -223,32 +185,20 @@ TAC *makeRET(TAC *code0){
     return tacJoin(code0, rettac);
 }
 
-TAC *makeDECL(TAC *code0, TAC *code1){
-    return tacJoin(code0, code1);
-}
-
-TAC *makeEXPR_PAR(TAC *code0){
-    return code0;
-}
-
 TAC *makeEXPR_VEC(TAC *code0, TAC *code1){
-    TAC *exprtac = tacCreate(TAC_VEC, makeTemp(), code0? code0->res:0, code1? code1->res : 0);
+    TAC *exprtac = tacCreate(TAC_ACC_VEC, makeTemp(), code0? code0->res: 0, code1? code1->res: 0);
 
     return tacJoin(code0, tacJoin(code1, exprtac));
 }
 
-TAC *makeBODY(TAC *code0){
-    return code0;
-}
-
 TAC *makeATTR(TAC *code0, TAC *code1){
-    TAC *copytac = tacCreate(TAC_COPY, code0? code0->res : 0, code1? code1->res : 0, 0);
+    TAC *copytac = tacCreate(TAC_COPY, code0? code0->res: 0, code1? code1->res: 0, 0);
 
     return  tacJoin(code0, tacJoin(code1, copytac));
 }
 
 TAC *makeATTR_VEC(TAC *code0, TAC *code1, TAC *code2){
-    TAC *copytac = tacCreate(TAC_COPY_VEC, code0? code0->res : 0, code1? code1->res : 0, code2? code2->res : 0);
+    TAC *copytac = tacCreate(TAC_COPY_VEC, code0? code0->res: 0, code1? code1->res: 0, code2? code2->res: 0);
 
     return tacJoin(code0, tacJoin(code1, tacJoin(code2, copytac)));
 }
@@ -258,7 +208,7 @@ TAC *makeSYMBOL(AST *node){
 }
 
 TAC *makeOP(int type, TAC *code0, TAC *code1){
-    TAC *optac = tacCreate(type, makeTemp(), code0? code0->res : 0, code1? code1->res: 0);
+    TAC *optac = tacCreate(type, makeTemp(), code0? code0->res: 0, code1? code1->res: 0);
 
     return tacJoin(code0, tacJoin(code1, optac));
 }
@@ -268,7 +218,7 @@ TAC *makeREAD(){
 }
 
 TAC *makeGOTO(TAC *code0){
-    TAC *jumptac = tacCreate(TAC_JUMP, code0? code0->res:0, 0, 0);
+    TAC *jumptac = tacCreate(TAC_JUMP, code0? code0->res: 0, 0, 0);
 
     return tacJoin(code0, jumptac);
 }
@@ -299,7 +249,6 @@ TAC *makeWHILE(TAC *code0, TAC *code1){
 
     TAC *labelendtac = tacCreate(TAC_LABEL, labelend, 0, 0);
 
-
     return tacJoin(labelwhiletac, tacJoin(whiletac, tacJoin(jumptac, labelendtac)));
 }
 
@@ -307,7 +256,7 @@ TAC *makeIFELSE(TAC *code0, TAC *code1, TAC *code2){
     HASH *labelelse = makeLabel();
     HASH *labelend = makeLabel();
 
-    TAC *jumpelsetac = tacCreate(TAC_JFALSE, labelelse, code0? code0->res : 0 , 0);
+    TAC *jumpelsetac = tacCreate(TAC_JFALSE, labelelse, code0? code0->res: 0 , 0);
     jumpelsetac->prev = code0;
     
     TAC *jumpendtac = tacCreate(TAC_JUMP, labelend, 0 , 0);
