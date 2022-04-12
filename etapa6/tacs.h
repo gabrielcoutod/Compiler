@@ -37,11 +37,13 @@ typedef struct tac_node{
     HASH *op1;
     HASH *op2;
     struct tac_node *prev;
+    struct tac_node *next;
 } TAC;
 
 TAC *tacCreate(int type, HASH *res, HASH *op1, HASH *op2);
 void tacPrint(TAC *tac);
 void tacPrintBackwards(TAC *tac);
+TAC *tacReverse(TAC *tac);
 TAC *tacJoin(TAC *l1, TAC *l2);
 
 TAC *generateCode(AST *node);

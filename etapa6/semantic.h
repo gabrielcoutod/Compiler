@@ -24,7 +24,7 @@ void checkGOTO(AST *command);
 void checkCommand(AST *command);
 void checkFunction(AST *node);
 void checkFunctions(AST *node);
-void checkIfLenMatchesSize(int val, AST *node, char *name, int line);
+void checkIfLenMatchesSize(HASH *vec, int val, AST *node, char *name, int line);
 int getDataTypeFromType(int type);
 void setType(AST *node, int type, int datatype, char *name);
 void checkAndSetDeclarations(AST *node);

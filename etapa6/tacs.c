@@ -1,5 +1,33 @@
 #include "tacs.h"
 
+
+typedef struct hash_list
+{
+    struct hash_list *next;
+    HASH *val;
+} HASH_LIST;
+
+HASH_LIST *currentPar;
+
+void append_hash_list(HASH *val){
+    HASH_LIST *newnode = (HASH_LIST*) calloc(1, sizeof(HASH_LIST));
+    
+    newnode->val = val;
+    newnode->next = 0;
+
+    if(currentPar == 0){
+        currentPar = newnode;
+        return;
+    }
+
+    newnode->next = currentPar;
+    currentPar= newnode;        
+}
+
+void pop_hash_list(){
+    currentPar = currentPar->next;
+}
+
 TAC *makeDECL_FUNC(TAC *code0, TAC *code1, TAC *code2, TAC *code3);
 TAC *makeARGL(TAC *code0, TAC *code1);
 TAC *makeFCALL(TAC *code0, TAC *code1);
@@ -16,6 +44,7 @@ TAC *makeGOTO(TAC *code0);
 TAC *makeIF(TAC *code0, TAC *code1);
 TAC *makeWHILE(TAC *code0, TAC *code1);
 TAC *makeIFELSE(TAC *code0, TAC *code1, TAC *code2);
+TAC *reverseArgs(TAC *code);
 
 TAC *tacCreate(int type, HASH *res, HASH *op1, HASH *op2){
     TAC *newtac = (TAC *) calloc(1, sizeof(TAC));
@@ -79,6 +108,15 @@ void tacPrintBackwards(TAC *tac){
     tacPrint(tac);
 }
 
+
+TAC *tacReverse(TAC *tac){
+    TAC *t = tac;
+    for(t = tac; t->prev; t = t->prev){
+        t->prev->next = t;
+    }
+    return t;
+}
+
 TAC *tacJoin(TAC *l1, TAC *l2){
     TAC *point;
 
@@ -100,6 +138,14 @@ TAC *generateCode(AST *node){
 
     if (!node)
         return 0;
+
+    if(node->type == AST_FCALL){
+        AST *args = node->son[0]->symbol->function->son[2];
+        while(args){
+            append_hash_list(args->son[0]->son[1]->symbol);
+            args = args->son[1];
+        }
+    }
 
     for(i = 0; i < MAX_SONS; ++i){
         code[i] = generateCode(node->son[i]);
@@ -156,15 +202,41 @@ TAC *makeDECL_FUNC(TAC *code0, TAC *code1, TAC *code2, TAC *code3){
 }
 
 TAC *makeARGL(TAC *code0, TAC *code1){
-    TAC *argtac = tacCreate(TAC_ARG, code0? code0->res: 0, 0, 0);
+    TAC *argtac = tacCreate(TAC_ARG, currentPar? (currentPar->val? currentPar->val: 0): 0, code0? code0->res: 0, 0);
+    pop_hash_list();
 
-    return tacJoin(code0, tacJoin(argtac, code1));
+    return tacJoin(code0, tacJoin(code1, argtac));
 }
 
 TAC *makeFCALL(TAC *code0, TAC *code1){
     TAC *ftac = tacCreate(TAC_CALL, makeTemp(), code0? code0->res: 0, 0);
 
+    code1 = reverseArgs(code1);
+
     return tacJoin(code0, tacJoin(code1, ftac));
+}
+
+TAC *reverseArgs(TAC *code){
+    TAC *firstArg = code;
+    TAC *lastArg = code;
+    TAC *prevArg = code;
+
+    if(code == 0){
+        return code;
+    }
+
+    code = code->prev;
+    while(code != 0 && code->type == TAC_ARG){
+        lastArg = code;
+        code = code->prev;
+
+        lastArg->prev = prevArg;
+        prevArg = lastArg;
+    }
+
+    firstArg->prev = code;
+
+    return lastArg;
 }
 
 TAC *makePRINTL(TAC *code0, TAC *code1){

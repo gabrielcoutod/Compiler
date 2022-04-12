@@ -5,6 +5,7 @@
 #include "ast.h"
 #include "semantic.h"
 #include "tacs.h"
+#include "asm.h"
 
 extern FILE *yyin;
 extern AST *ast;
@@ -35,6 +36,8 @@ int main(int argc, char** argv){
         exit(4);
     }
 
+    //hashPrint();
+
     FILE *out = fopen(argv[2],"w");
     if (out == 0) {
         fprintf(stderr, "Cannot open file %s.\n",argv[2]);
@@ -43,7 +46,12 @@ int main(int argc, char** argv){
 
     decompile(ast, out);
 
-    tacPrintBackwards(generateCode(ast));
+    TAC *code = generateCode(ast);
+
+    //tacPrintBackwards(code);
+
+    code = tacReverse(code);
+    generateAsm(code);
 
     hashFree();
 

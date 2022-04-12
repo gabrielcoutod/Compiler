@@ -1,6 +1,7 @@
  /* Made by Gabriel Couto Domingues */
 
 #include "hash.h"
+#include "val_list.h"
 
 HASH **table;
 
@@ -12,8 +13,10 @@ int hashFunction(char *name){
     int hash = 1;
     int c;
 
-    while (c = *name++){
+    while (*name){
+        c = *name;
         hash = (hash * c) % HASH_SIZE + 1;
+        ++name;
     }
     
     return hash - 1;
@@ -78,6 +81,69 @@ void hashPrint(void){
     }
 }
 
+void printAsm(FILE *fout){
+    int i;
+    fprintf(fout, "\n\n\n## DATA\n.section .data\n");
+
+    for (i = 0; i < HASH_SIZE; ++i){
+        HASH *list = table[i];
+
+        if (list != NULL){
+            while (list != NULL) {
+                if(list->type == SYMBOL_VARIABLE || list->type == SYMBOL_VECTOR){
+                    fprintf(fout, "_%s:\n", hashStringName(list)->name);
+                    VAL_LIST *lst;
+                    for(lst = list->vals; lst; lst = lst->next){
+                        fprintf(fout, "\t.long\t%d\n", lst->val);
+                    }
+                } else if(list->type == SYMBOL_LITINT){
+                    fprintf(fout, "_%s:\n", hashStringName(list)->name);
+                    fprintf(fout, "\t.long\t%d\n", atoi(list->name));
+                } else if(list->type == SYMBOL_LITCHAR){
+                    fprintf(fout, "_%s:\n", hashStringName(list)->name);
+                    fprintf(fout, "\t.long\t%d\n", list->name[1]);
+                } else if(list->type == SYMBOL_STRING){
+                    fprintf(fout, "_%s:\n", hashStringName(list)->name);
+                    fprintf(fout, "\t.string\t%s\n", list->name);
+                }
+
+                list = list->next;
+            }
+        }
+    }
+}
+
+char *string_with_alpha_under(char *str){
+    char *new_str = (char *) calloc(260, sizeof(char));
+
+    int i;
+    for(i = 0; str[i] && i <= 255 - 1; ++i){
+        if((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')){
+            new_str[i] = str[i];
+        } else {
+            new_str[i] = '_';
+        }
+    }
+    new_str[i] = '\0';
+    return new_str;
+}
+
+HASH *hashStringName(HASH *par){
+    static int serial = 0;
+    char buffer[256] = "";
+
+    if(par->ASMname){
+        return par->ASMname;
+    }
+
+    sprintf(buffer, "NAME_%d_%s", serial++, string_with_alpha_under(par->name));
+    HASH *h = hashInsert(buffer, SYMBOL_TEMP_NAME);
+
+    par->ASMname = h;
+    
+    return h;
+}
+
 HASH *hashFind(char *name){
     int pos = hashFunction(name);
     HASH *list = table[pos];
@@ -97,7 +163,12 @@ HASH *makeTemp(void){
     char buffer[256] = "";
 
     sprintf(buffer, "TEMP_%d", serial++);
-    hashInsert(buffer, SYMBOL_VARIABLE);
+    HASH *h = hashInsert(buffer, SYMBOL_VARIABLE);
+    h->ASMname = h;
+
+    h->vals = (VAL_LIST*) calloc(1, sizeof(VAL_LIST));
+
+    return h;
 }
 
 HASH *makeLabel(void){
@@ -105,5 +176,16 @@ HASH *makeLabel(void){
     char buffer[256] = "";
 
     sprintf(buffer, "LABEL_%d", serial++);
-    hashInsert(buffer, SYMBOL_LABEL);
+    HASH *h = hashInsert(buffer, SYMBOL_LABEL);
+    h->ASMname = h;
+
+    return h;
+}
+
+void addValHash(HASH *node, int val){
+    if(node->vals == NULL){
+        node->vals = create_val_list(val);
+    } else {
+        append_val_list(node->vals, val);
+    }
 }

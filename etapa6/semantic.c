@@ -40,11 +40,12 @@ void checkAndSetDeclarations(AST *node){
             setType(node->son[1], SYMBOL_VECTOR, getDataTypeFromType(node->son[0]->type), "vector");
             node->son[1]->symbol->vecSize = atoi(node->son[2]->symbol->name);
             if(node->son[1]->symbol->vecSize > 0){
-                checkIfLenMatchesSize(node->son[1]->symbol->vecSize, node->son[3], node->son[1]->symbol->name, node->son[1]->line);
+                checkIfLenMatchesSize(node->son[1]->symbol, node->son[1]->symbol->vecSize, node->son[3], node->son[1]->symbol->name, node->son[1]->line);
             } else {
                 fprintf(stderr, "Semantic Error: vector %s needs to have positive size at line %d\n", node->son[1]->symbol->name, node->son[1]->line);
                 ++semanticErrors;
             }
+
             break;
 
         case AST_DECL_ARR_EMPT: 
@@ -58,10 +59,29 @@ void checkAndSetDeclarations(AST *node){
 
         case AST_DECL_VAR: 
             setType(node->son[1], SYMBOL_VARIABLE, getDataTypeFromType(node->son[0]->type), "variable");
+            if(node->son[2]->symbol->type == SYMBOL_LITCHAR)
+                addValHash(node->son[1]->symbol, node->son[2]->symbol->name[1]);
+            else
+                addValHash(node->son[1]->symbol, atoi(node->son[2]->symbol->name));
             break;
         
         case AST_DECL_VAR_FLOAT: 
             setType(node->son[0], SYMBOL_VARIABLE, getDataTypeFromType(AST_FLOAT), "variable");
+            int arg1 = 0;
+            int arg2 = 0;
+
+            if(node->son[1]->symbol->type == SYMBOL_LITCHAR)
+                arg1 = node->son[1]->symbol->name[1];
+            else
+                arg1 = atoi(node->son[1]->symbol->name);
+
+            if(node->son[2]->symbol->type == SYMBOL_LITCHAR)
+                arg2 = node->son[2]->symbol->name[1];
+            else
+                arg2 = atoi(node->son[2]->symbol->name);
+
+
+            addValHash(node->son[0]->symbol, arg1 / arg2);
             break;
 
         default: 
@@ -89,12 +109,17 @@ int getDataTypeFromType(int type){
         return DATATYPE_CHAR; 
     if(type == AST_FLOAT)
         return DATATYPE_FLOAT;
+    return 0;
 }
 
-void checkIfLenMatchesSize(int val, AST *node, char *name, int line){
+void checkIfLenMatchesSize(HASH *vec, int val, AST *node, char *name, int line){
     int count = 0;
 
     while(node){
+        if(node->son[0]->symbol->type == SYMBOL_LITCHAR)
+            addValHash(vec, node->son[0]->symbol->name[1]);
+        else
+            addValHash(vec, atoi(node->son[0]->symbol->name));
         ++count;
         node = node->son[1];
     }
@@ -154,6 +179,7 @@ void checkFunction(AST *node){
             h->type = SYMBOL_VARIABLE;
             h->datatype = getDataTypeFromType(par->son[0]->type);
             h->datatypeFunction = getDataTypeFromType(par->son[0]->type);
+            addValHash(h, 0);
         }
 
         pars = pars->son[1];
@@ -176,6 +202,7 @@ void checkFunction(AST *node){
     currentFunction = 0;
     returnType = 0;
 
+    /*
     emptySymbols();
 
     pars = decl->son[2];
@@ -191,7 +218,7 @@ void checkFunction(AST *node){
         }
 
         pars = pars->son[1];
-    }
+    }*/
 
 }
 
@@ -380,7 +407,7 @@ int getDatatypeExpr(AST *expr){
                 while(parsFunction && parsCall){
 
                     int typeCall = getDatatypeExpr(parsCall->son[0]);
-                    int typeFunction = getDataTypeFromType(parsFunction->son[0]->type);
+                    int typeFunction = getDataTypeFromType(parsFunction->son[0]->son[0]->type);
 
                     if(!compatibleTypes(typeCall, typeFunction)){
                         fprintf(stderr, "Semantic Error: incompatible type of argument for %s at line %d\n", func->son[1]->symbol->name, expr->son[0]->line);

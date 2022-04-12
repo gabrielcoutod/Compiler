@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "val_list.h"
 
 #define HASH_SIZE 997
 
@@ -18,6 +19,7 @@
 #define SYMBOL_VARIABLE 6
 #define SYMBOL_VECTOR 7
 #define SYMBOL_LABEL 8
+#define SYMBOL_TEMP_NAME 9
 
 #define DATATYPE_INT 1
 #define DATATYPE_CHAR 2
@@ -33,6 +35,8 @@ typedef struct HashStruct {
     int datatypeFunction;
     struct HashStruct *next;
     struct astnode *function;
+    struct HashStruct *ASMname;
+    VAL_LIST *vals;
     int vecSize;
 } HASH;
 
@@ -51,11 +55,17 @@ void hashFree(void);
 // Prints the table. For debugging purposes.
 void hashPrint(void);
 
+void printAsm(FILE *fout);
+
 // Finds the entry associated with the given name.
 HASH *hashFind(char *name);
 
 HASH *makeTemp(void);
 
 HASH *makeLabel(void);
+
+void addValHash(HASH *node, int val);
+
+HASH *hashStringName(HASH *par);
 
 #endif
