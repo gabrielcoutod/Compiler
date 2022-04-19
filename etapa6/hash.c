@@ -2,6 +2,7 @@
 
 #include "hash.h"
 #include "val_list.h"
+#include "string.h"
 
 HASH **table;
 
@@ -114,17 +115,15 @@ void printAsm(FILE *fout){
 }
 
 char *string_with_alpha_under(char *str){
-    char *new_str = (char *) calloc(260, sizeof(char));
+    char *new_str = (char *) calloc(strlen(str) + 1, sizeof(char));
+    strcpy(new_str, str);
 
     int i;
-    for(i = 0; str[i] && i <= 255 - 1; ++i){
-        if((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')){
-            new_str[i] = str[i];
-        } else {
+    for(i = 0; new_str[i]; ++i){
+        if(!((new_str[i] >= 'a' && new_str[i] <= 'z') || (new_str[i] >= 'A' && new_str[i] <= 'Z'))){
             new_str[i] = '_';
         }
     }
-    new_str[i] = '\0';
     return new_str;
 }
 

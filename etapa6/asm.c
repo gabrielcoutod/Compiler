@@ -226,7 +226,7 @@ void generateAsm(TAC *first){
 
             case TAC_SYMBOL:break;
 
-            default: fprintf(stderr, "%d",tac->type); exit(1); break;
+            default: fprintf(stderr, "TAC_UNKNOWN %d",tac->type); break;
         }
 
         fflush(fout);
