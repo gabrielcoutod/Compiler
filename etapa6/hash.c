@@ -120,7 +120,9 @@ char *string_with_alpha_under(char *str){
 
     int i;
     for(i = 0; new_str[i]; ++i){
-        if(!((new_str[i] >= 'a' && new_str[i] <= 'z') || (new_str[i] >= 'A' && new_str[i] <= 'Z'))){
+        if(!((new_str[i] >= 'a' && new_str[i] <= 'z') || 
+            (new_str[i] >= 'A' && new_str[i] <= 'Z') ||
+            (new_str[i] >= '0' && new_str[i] <= '9'))){
             new_str[i] = '_';
         }
     }
@@ -135,10 +137,28 @@ HASH *hashStringName(HASH *par){
         return par->ASMname;
     }
 
-    sprintf(buffer, "NAME_%d_%s", serial++, string_with_alpha_under(par->name));
+    if(par->type == SYMBOL_VARIABLE){
+        sprintf(buffer, "VAR_%d_%s", serial++, string_with_alpha_under(par->name));
+    } else if(par->type == SYMBOL_VECTOR){
+        sprintf(buffer, "VEC_%d_%s", serial++, string_with_alpha_under(par->name));
+    } else if(par->type == SYMBOL_LITINT){
+        sprintf(buffer, "INT_%s", string_with_alpha_under(par->name)); serial++;
+    } else if(par->type == SYMBOL_LITCHAR){
+        sprintf(buffer, "CHAR_%d%s", serial++, string_with_alpha_under(par->name));
+    } else if(par->type == SYMBOL_STRING){
+        sprintf(buffer, "STRING_%d%s", serial++, string_with_alpha_under(par->name));
+    } else if(par->type == SYMBOL_FUNCTION){
+        sprintf(buffer, "FUNCTION_%d_%s", serial++, string_with_alpha_under(par->name));
+    } else if(par->type == SYMBOL_LABEL){
+        sprintf(buffer, "LABEL_%d_%s", serial++, string_with_alpha_under(par->name));
+    } else {
+        sprintf(buffer, "NAME_%d_%s", serial++, string_with_alpha_under(par->name));
+    }
+
     HASH *h = hashInsert(buffer, SYMBOL_TEMP_NAME);
 
     par->ASMname = h;
+    h->ASMname = h;
     
     return h;
 }
