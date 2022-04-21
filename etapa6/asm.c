@@ -182,8 +182,7 @@ void generateAsm(TAC *first){
             case TAC_PRINT: 
                 if(tac->res->type==SYMBOL_STRING){
                     fprintf(fout, "## TAC_PRINT\n");
-                    fprintf(fout, "\tmovq	_%s(%%rip), %%rax\n", hashStringName(tac->res)->name);
-                    fprintf(fout, "\tmovq	%%rax, %%rsi\n");
+                    fprintf(fout, "\tleaq	_%s(%%rip), %%rsi\n", hashStringName(tac->res)->name);
                     fprintf(fout, "\tleaq	.printstringstr(%%rip), %%rdi\n");
                     fprintf(fout, "\tmovl	$0, %%eax\n");
 	                fprintf(fout, "\tcall   printf@PLT\n\n");

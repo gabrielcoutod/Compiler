@@ -104,5 +104,5 @@ int main(){
     }
     scanf("%d", &int_um);
     printf("%s","uma string na main");
-    printf("%d",5);
+    printf("%d",int_um);
 }

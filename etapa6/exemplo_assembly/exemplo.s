@@ -553,7 +553,8 @@ main:
 	leaq	.LC1(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	movl	$5, %esi
+	movl	int_um(%rip), %eax
+	movl	%eax, %esi
 	leaq	.LC2(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT

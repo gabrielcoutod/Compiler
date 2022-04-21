@@ -54,6 +54,13 @@ void checkAndSetDeclarations(AST *node){
             if(node->son[1]->symbol->vecSize <= 0){
                 fprintf(stderr, "Semantic Error: vector %s needs to have positive size at line %d\n", node->son[1]->symbol->name, node->son[1]->line);
                 ++semanticErrors;
+            } else {
+                int len = node->son[1]->symbol->vecSize;
+                int i = 0;
+                while(i < len){
+                    addValHash(node->son[1]->symbol, 0);
+                    ++i;
+                }
             }
             break;
 
@@ -243,8 +250,8 @@ void checkCommand(AST *command){
 
 void checkGOTO(AST *command){
     if(command->son[0]->symbol->type == SYMBOL_IDENT){
-        fprintf(stderr, "Semantic Error: label %s not declared at line %d\n", command->son[0]->symbol->name, command->son[0]->line);
-        ++semanticErrors;
+        //fprintf(stderr, "Semantic Error: label %s not declared at line %d\n", command->son[0]->symbol->name, command->son[0]->line);
+        //++semanticErrors;
     } else if (command->son[0]->symbol->type != SYMBOL_LABEL){
         fprintf(stderr, "Semantic Error: %s is not a label at line %d\n", command->son[0]->symbol->name, command->son[0]->line);
         ++semanticErrors;
