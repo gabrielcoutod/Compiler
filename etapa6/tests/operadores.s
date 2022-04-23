@@ -208,20 +208,16 @@ _LABEL_21_pula_returns:
 	cmpl	$1, %eax
 	jne	_LABEL_3
 
-## TAC_RET
-	movl	_INT_1(%rip), %eax
-	popq	%rbp
-	ret
+## TAC_JUMP
+	jmp	_LABEL_22_less_return_true
 
 ## TAC_JUMP
 	jmp	_LABEL_4
 
 ## TAC_LABEL
 _LABEL_3:
-## TAC_RET
-	movl	_INT_0(%rip), %eax
-	popq	%rbp
-	ret
+## TAC_JUMP
+	jmp	_LABEL_23_less_return_false
 
 ## TAC_LABEL
 _LABEL_4:

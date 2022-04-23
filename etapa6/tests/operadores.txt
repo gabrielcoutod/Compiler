@@ -41,9 +41,9 @@ int less(int par_um_less, char par_dois_less){
 
     pula-returns:
     if(par_um_less < par_dois_less) then {
-        return 1;
+        goto less-return-true;
     } else {
-        return 0;
+        goto less-return-false;
     };
 }
 
