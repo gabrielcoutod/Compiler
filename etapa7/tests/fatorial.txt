@@ -1,0 +1,24 @@
+
+
+int fat[10];
+int cur_fat: 0;
+int iter: 10;
+int cur_iter: 0;
+
+int main(){
+    cur_fat = 1;
+    cur_iter = 0;
+
+    while(cur_iter != iter){
+        fat[cur_iter] = cur_fat;
+        print fat[cur_iter], "\n";
+        cur_iter = cur_iter + 1;
+        cur_fat = cur_fat * (cur_iter + 1);
+    };
+
+    cur_iter = 0;
+    while(cur_iter < iter){
+        print "fat(", cur_iter + 1, "): ", fat[cur_iter], "\n";
+        cur_iter = cur_iter + 1;
+    };
+}
