@@ -36,6 +36,7 @@ typedef struct tac_node{
     HASH *res;
     HASH *op1;
     HASH *op2;
+    int isConstant;
     struct tac_node *prev;
     struct tac_node *next;
 } TAC;

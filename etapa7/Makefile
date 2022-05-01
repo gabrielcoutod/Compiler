@@ -2,8 +2,8 @@
 # UFRGS - Compiladores B - Marcelo Johann - 2009/2
 #
 
-etapa6: main.o hash.o ast.o y.tab.o lex.yy.o decompiler.o semantic.o symbols.o tacs.o asm.o val_list.o
-	gcc main.o lex.yy.o y.tab.o hash.o ast.o decompiler.o semantic.o symbols.o tacs.o asm.o val_list.o -o etapa6
+etapa7: main.o hash.o ast.o y.tab.o lex.yy.o decompiler.o semantic.o symbols.o tacs.o asm.o val_list.o
+	gcc main.o lex.yy.o y.tab.o hash.o ast.o decompiler.o semantic.o symbols.o tacs.o asm.o val_list.o -o etapa7
 
 main.o: main.c
 	gcc -c main.c
@@ -45,9 +45,9 @@ lex.yy.c: scanner.l
 	flex scanner.l 
 
 tar:
-	tar cvzf etapa6.tgz *
+	tar cvzf etapa7.tgz *
 
 clean:
-	rm lex.yy.c etapa6 y.tab.c y.tab.h *.o etapa6.tgz
+	rm lex.yy.c etapa7 y.tab.c y.tab.h *.o etapa7.tgz
 
 

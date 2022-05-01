@@ -276,11 +276,51 @@ TAC *makeATTR_VEC(TAC *code0, TAC *code1, TAC *code2){
 }
 
 TAC *makeSYMBOL(AST *node){
-    return tacCreate(TAC_SYMBOL, node->symbol, 0, 0);
+    TAC *tac = tacCreate(TAC_SYMBOL, node->symbol, 0, 0);
+    if(node->symbol->type == SYMBOL_LITINT || node->symbol->type == SYMBOL_LITCHAR){
+        tac->isConstant = 1;
+    }
+    return tac;
 }
 
 TAC *makeOP(int type, TAC *code0, TAC *code1){
-    TAC *optac = tacCreate(type, makeTemp(), code0? code0->res: 0, code1? code1->res: 0);
+    TAC *optac;
+    if(code0->type == TAC_SYMBOL && code1->type == TAC_SYMBOL && code0->isConstant == 1 && code1->isConstant == 1){
+        int op0;
+        int op1;
+
+        if(code0->res->type == SYMBOL_LITCHAR)
+            op0 = code0->res->name[1];
+        else
+            op0 = atoi(code0->res->name);
+        
+        if(code1->res->type == SYMBOL_LITCHAR)
+            op1 = code1->res->name[1];
+        else
+            op1 = atoi(code1->res->name);
+
+        int opRes;
+        switch(type){
+            case TAC_ADD: opRes = op0 + op1; break;
+            case TAC_SUB: opRes = op0 - op1; break;
+            case TAC_DIV: opRes = op0 / op1; break;
+            case TAC_MUL: opRes = op0 * op1; break;
+            case TAC_DIF: opRes = op0 != op1; break;
+            case TAC_EQ: opRes = op0 == op1; break;
+            case TAC_GE: opRes = op0 >= op1; break;
+            case TAC_LE: opRes = op0 <= op1; break;
+            case TAC_GREAT: opRes = op0 > op1; break;
+            case TAC_LESS: opRes = op0 < op1; break;
+            default: fprintf(stderr, "OPTIMIZATION ERROR\n"); opRes = op0 + op1; break;
+        }
+        char buf[100];
+        sprintf(buf, "%d", opRes);
+        HASH *newHash = hashInsert(buf, SYMBOL_LITINT);
+        optac = tacCreate(TAC_SYMBOL, newHash, 0, 0);
+        optac->isConstant = 1;
+    } else{
+        optac = tacCreate(type, makeTemp(), code0? code0->res: 0, code1? code1->res: 0);
+    }
 
     return tacJoin(code0, tacJoin(code1, optac));
 }

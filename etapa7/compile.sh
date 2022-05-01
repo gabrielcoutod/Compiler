@@ -1,5 +1,5 @@
 make
-./etapa6 $1 out.txt
+./etapa7 $1 out.txt
 mv out.s "$2.s"
 gcc "$2.s" -o "$2.out"
 rm out.txt

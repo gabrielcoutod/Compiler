@@ -19,3 +19,9 @@ rm ./tests/fatorial.out
 diff tests/gold_declaracoes.txt stdout.txt
 rm stdout.txt
 rm ./tests/declaracoes.out
+
+./compile.sh tests/opt.txt tests/opt
+./tests/opt.out > stdout.txt
+diff tests/gold_opt.txt stdout.txt
+rm stdout.txt
+rm ./tests/opt.out

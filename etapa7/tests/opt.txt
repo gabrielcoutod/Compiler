@@ -1,0 +1,12 @@
+int a: 0;
+
+int main (){
+    a = 5*(1-8)/4+3-19;
+    print a, "\n";
+    print 5 == 3, "\n";
+    print 5 != 3, "\n";
+    print 5 <= 3, "\n";
+    print 5 >= 3, "\n";
+    print 5 < 3, "\n";
+    print 5 > 3, "\n";
+}
