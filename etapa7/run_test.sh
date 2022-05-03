@@ -25,3 +25,10 @@ rm ./tests/declaracoes.out
 diff tests/gold_opt.txt stdout.txt
 rm stdout.txt
 rm ./tests/opt.out
+
+make
+./etapa7 tests/syntax_errors.txt out.txt > stdout.txt 2> stderr.txt
+diff stderr.txt tests/gold_syntax_errors.txt
+rm stderr.txt
+rm stdout.txt
+make clean

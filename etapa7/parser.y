@@ -7,8 +7,10 @@
     int yyerror();
     int getLineNumber();
     int yylex();
+    int getSyntaxErrors();
 
     AST *ast;
+    int syntax_errors = 0;
  %}
 
  %union {
@@ -91,6 +93,8 @@ decl: dec decl {$$ = astCreate(AST_DECL, 0, $1, $2, 0, 0);}
 
 dec: decv ';' {$$ = $1;}
     | decf  {$$ = $1;}
+    | decv error {$$ = 0; fprintf(stderr, "Missing \';\' for variable/vector declaration at line %d.\n", getLineNumber());}
+    | error {$$ = 0; fprintf(stderr, "Invalid declaration at line %d.\n", getLineNumber());}
     ;
 
 decv: var {$$ = $1;}
@@ -99,6 +103,10 @@ decv: var {$$ = $1;}
 
 var: inttype TK_IDENTIFIER ':' lit {$$ = astCreate(AST_DECL_VAR, 0, $1, astSymbol($2), $4, 0);}
     | floattype TK_IDENTIFIER ':' LIT_INTEGER '/' LIT_INTEGER {$$ = astCreate(AST_DECL_VAR_FLOAT, 0, astSymbol($2), astSymbol($4), astSymbol($6), 0);}
+    | error TK_IDENTIFIER ':' lit {$$ = 0; fprintf(stderr, "Missing type for variable declaration at line %d.\n", getLineNumber());}
+    | error TK_IDENTIFIER ':' LIT_INTEGER '/' LIT_INTEGER {$$ = 0; fprintf(stderr, "Missing type for variable declaration at line %d.\n", getLineNumber());}
+    | inttype TK_IDENTIFIER error {$$ = 0; fprintf(stderr, "Missing initial value for variable declaration at line %d.\n", getLineNumber());}
+    | floattype TK_IDENTIFIER error {$$ = 0; fprintf(stderr, "Missing initial value for variable declaration at line %d.\n", getLineNumber());}
     ;  
 
 lit: LIT_INTEGER {$$ = astSymbol($1);}
@@ -109,6 +117,14 @@ array: inttype TK_IDENTIFIER '[' LIT_INTEGER ']' ':' litl {$$ = astCreate(AST_DE
     | inttype TK_IDENTIFIER '[' LIT_INTEGER ']' {$$ = astCreate(AST_DECL_ARR_EMPT, 0, $1, astSymbol($2), astSymbol($4), 0);}
     | floattype TK_IDENTIFIER '[' LIT_INTEGER ']' ':' litl {$$ = astCreate(AST_DECL_ARR_LIT, 0, $1, astSymbol($2), astSymbol($4), $7);}
     | floattype TK_IDENTIFIER '[' LIT_INTEGER ']' {$$ = astCreate(AST_DECL_ARR_EMPT, 0, $1, astSymbol($2), astSymbol($4), 0);}
+    | error TK_IDENTIFIER '[' LIT_INTEGER ']' ':' litl {$$ = 0; fprintf(stderr, "Missing type for vector declaration at line %d.\n", getLineNumber());}
+    | error TK_IDENTIFIER '[' LIT_INTEGER ']' {$$ = 0; fprintf(stderr, "Missing type for vector declaration at line %d.\n", getLineNumber());}
+    | inttype TK_IDENTIFIER '[' error ']' ':' litl {$$ = 0; fprintf(stderr, "Vector size needs to be an integer at line %d.\n", getLineNumber());}
+    | inttype TK_IDENTIFIER '[' error ']' {$$ = 0; fprintf(stderr, "Vector size needs to be an integer at line %d.\n", getLineNumber());}
+    | floattype TK_IDENTIFIER '[' error ']' ':' litl  {$$ = 0; fprintf(stderr, "Vector size needs to be an integer at line %d.\n", getLineNumber());}
+    | floattype TK_IDENTIFIER '[' error ']'  {$$ = 0; fprintf(stderr, "Vector size needs to be an integer at line %d.\n", getLineNumber());}
+    | inttype TK_IDENTIFIER '[' LIT_INTEGER ']' ':' error {$$ = 0; fprintf(stderr, "Missing initial values for vector declaration at line %d.\n", getLineNumber());}
+    | floattype TK_IDENTIFIER '[' LIT_INTEGER ']' ':' error {$$ = 0; fprintf(stderr, "Missing initial values for vector declaration at line %d.\n", getLineNumber());}
     ;
 
 litl: lit litl {$$ = astCreate(AST_LITL, 0, $1, $2, 0, 0);}
@@ -125,6 +141,7 @@ floattype: KW_FLOAT {$$ = astCreate(AST_FLOAT, 0, 0, 0, 0, 0);}
 
 decf: inttype TK_IDENTIFIER '(' parl ')' cmd {$$ = astCreate(AST_DECL_FUNC, 0, $1, astSymbol($2), $4, $6);}
     | floattype TK_IDENTIFIER '(' parl ')' cmd {$$ = astCreate(AST_DECL_FUNC, 0, $1, astSymbol($2), $4, $6);}
+    | error TK_IDENTIFIER '(' parl ')' cmd {$$ = 0; fprintf(stderr, "Missing return type for function declaration at line %d.\n", getLineNumber());}
     ;
 
 parl: par restoparl {$$ = astCreate(AST_PARL, 0, $1, $2, 0, 0);}
@@ -132,11 +149,13 @@ parl: par restoparl {$$ = astCreate(AST_PARL, 0, $1, $2, 0, 0);}
     ;
 
 restoparl: ',' par restoparl {$$ = astCreate(AST_PARL, 0, $2, $3, 0, 0);}
+    | error par restoparl {$$ = 0; fprintf(stderr, "Missing \',\' between parameters at line %d.\n", getLineNumber());}
     | {$$ = 0;}
     ;
 
 par: inttype TK_IDENTIFIER {$$ = astCreate(AST_PAR, 0, $1, astSymbol($2), 0, 0);}
     | floattype TK_IDENTIFIER {$$ = astCreate(AST_PAR, 0, $1, astSymbol($2), 0, 0);}
+    | error TK_IDENTIFIER {$$ = 0; fprintf(stderr, "Missing type for parameter at line %d.\n", getLineNumber());}
     ;
 
 body: '{' cmdl '}' {$$ = astCreate(AST_BODY, 0, $2, 0, 0, 0);}
@@ -152,6 +171,7 @@ cmd: attr   {$$ = $1;}
     | print {$$ = $1;}
     | return    {$$ = $1;}
     | body  {$$ = $1;}
+    | error {$$ = 0; fprintf(stderr, "Invalid command at line %d.\n", getLineNumber());}
     |   {$$ = 0;}
     ;
 
@@ -165,6 +185,8 @@ print: KW_PRINT printl {$$ = astCreate(AST_PRINT, 0, $2, 0, 0, 0);}
 printl: expr ',' printl {$$ = astCreate(AST_PRINTL, 0, $1, $3, 0, 0);}
     | LIT_STRING ',' printl {$$ = astCreate(AST_PRINTL, 0, astSymbol($1), $3, 0, 0);}
     | expr {$$ = astCreate(AST_PRINTL, 0, $1, 0, 0, 0);}
+    | expr error printl {$$ = 0; fprintf(stderr, "Missing \',\' between print arguments at line %d.\n", getLineNumber());}
+    | LIT_STRING error printl {$$ = 0; fprintf(stderr, "Missing \',\' between print arguments at line %d.\n", getLineNumber());}
     | LIT_STRING {$$ = astCreate(AST_PRINTL, 0, astSymbol($1), 0, 0, 0);}
     ;
 
@@ -197,6 +219,7 @@ argl: expr restoargl    {$$ = astCreate(AST_ARGL, 0, $1, $2, 0, 0);}
     ;
 
 restoargl: ',' expr restoargl {$$ = astCreate(AST_ARGL, 0, $2, $3, 0, 0);}
+    |  error expr restoargl {$$ = 0; fprintf(stderr, "Missing \',\' between arguments at line %d.\n", getLineNumber());}
     |   {$$ = 0;}
     ;
 
@@ -211,7 +234,11 @@ rot: TK_IDENTIFIER {$$ = astSymbol($1);}
 
 %%
 
+int getSyntaxErrors(){
+    return syntax_errors;
+}
+
 int yyerror(){
-    fprintf(stderr, "Syntax error at line %d.\n", getLineNumber());
-    exit(3);
+    syntax_errors = 1;
+    return 0;
 }

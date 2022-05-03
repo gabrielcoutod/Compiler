@@ -1,0 +1,28 @@
+Missing ';' for variable/vector declaration at line 3.
+Vector size needs to be an integer at line 3.
+Vector size needs to be an integer at line 4.
+Missing initial values for vector declaration at line 5.
+Missing type for variable declaration at line 7.
+Missing type for variable declaration at line 8.
+Missing initial value for variable declaration at line 10.
+Missing initial value for variable declaration at line 11.
+Missing type for vector declaration at line 13.
+Missing type for vector declaration at line 14.
+Vector size needs to be an integer at line 16.
+Vector size needs to be an integer at line 17.
+Missing initial values for vector declaration at line 18.
+Invalid declaration at line 20.
+Invalid declaration at line 20.
+Invalid declaration at line 20.
+Invalid declaration at line 22.
+Missing ',' between parameters at line 22.
+Missing ',' between arguments at line 29.
+Missing type for parameter at line 32.
+Invalid command at line 33.
+Invalid command at line 33.
+Invalid command at line 33.
+Missing return type for function declaration at line 38.
+Missing ',' between print arguments at line 40.
+Invalid command at line 42.
+Invalid command at line 42.
+Syntax errors found.

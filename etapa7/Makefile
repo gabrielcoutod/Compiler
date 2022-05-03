@@ -39,7 +39,8 @@ lex.yy.o: lex.yy.c
 	gcc -c lex.yy.c
 
 y.tab.c: parser.y
-	bison -dy parser.y
+	bison -dy parser.y --warnings=none
+
 
 lex.yy.c: scanner.l
 	flex scanner.l 

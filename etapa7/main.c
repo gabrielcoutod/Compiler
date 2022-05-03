@@ -11,6 +11,7 @@ extern FILE *yyin;
 extern AST *ast;
 int yyparse();
 void initMe();
+int getSyntaxErrors();
 
 int main(int argc, char** argv){
 
@@ -28,6 +29,11 @@ int main(int argc, char** argv){
     }
 
     yyparse();
+
+    if(getSyntaxErrors() > 0){
+        fprintf(stderr, "Syntax errors found.\n");
+        exit(3);
+    }
 
     //astPrint(ast, 0);
 

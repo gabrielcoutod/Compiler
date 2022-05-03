@@ -1,0 +1,42 @@
+int var: 5
+
+int vec[vec]: 5;
+int vec[vec];
+int vec[1]: ;
+
+val:5;
+val: 5 / 3;
+
+int val;
+float val;
+
+vec[5];
+vec[10]: 5;
+
+float vec[vec]: 5;
+float vec[vec];
+float vec[5]: ;
+
+invaliddec = 5;
+
+int funum(int paru int pard){
+ a = 5;
+}
+
+int foo(int pars){
+    a = 3;
+    b = 5;
+    a = fundois(a b);
+}
+
+int fundois(parb){
+    funtres();
+}
+
+foo()
+
+int funtres(){
+    a = 5;
+    print a b;
+    a = 3
+}
