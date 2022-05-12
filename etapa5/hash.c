@@ -97,7 +97,7 @@ HASH *makeTemp(void){
     char buffer[256] = "";
 
     sprintf(buffer, "TEMP_%d", serial++);
-    hashInsert(buffer, SYMBOL_VARIABLE);
+    return hashInsert(buffer, SYMBOL_VARIABLE);
 }
 
 HASH *makeLabel(void){
@@ -105,5 +105,5 @@ HASH *makeLabel(void){
     char buffer[256] = "";
 
     sprintf(buffer, "LABEL_%d", serial++);
-    hashInsert(buffer, SYMBOL_LABEL);
+    return hashInsert(buffer, SYMBOL_LABEL);
 }
