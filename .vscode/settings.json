@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "asm.h": "c",
+        "ast.h": "c",
+        "decompiler.h": "c",
+        "string.h": "c",
+        "val_list.h": "c",
+        "semantic.h": "c",
+        "tacs.h": "c",
+        "symbols.h": "c",
+        "hash.h": "c"
+    }
+}
